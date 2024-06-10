@@ -1,0 +1,3 @@
+# Proyecto algoritmica I
+
+Implementación de un SUM con tomas de asistencias e ingresar notas notas de los alumnos desde la consola por ahora... 
