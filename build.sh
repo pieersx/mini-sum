@@ -2,6 +2,6 @@
 
 set -xe
 
-CFLAGS="-Wall -Wextra -std=c++17 -pedantic -g"
+CFLAGS="-Wall -Wextra -Werror -pedantic -std=c++17 -ggdb"
 
 clang++ $CFLAGS -o main main.cpp ./plug.cpp
