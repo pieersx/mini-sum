@@ -1,34 +1,39 @@
 #include <iostream>
 #include <fstream>
-#include <string.h>
+#include <cstring>
 #include <locale.h>
 
 #include "plug.hpp"
 
 using namespace std;
 
-struct Profesor {
-    long codigo;
+struct Usuario {
     string usuario;
     string contrasena;
-    string nombre1;
-    string nombre2;
+};
+
+struct Persona {
+    string primer_nombre;
+    string segundo_nombre;
     string apellido_paterno;
     string apellido_materno;
+};
+
+struct Profesor {
+    long codigo;
+    Usuario credenciales;
+    Persona datos_personales;
     string departamento;
     string curso;
 } profesor;
 
 struct Alumno {
     long codigo;
-    string usuario;
-    string contrasena;
-    string nombre1;
-    string nombre2;
-    string apellido_paterno;
-    string apellido_materno;
-    string carrera;    
-} profesor;
+    Usuario credenciales;
+    Persona datos_personales;
+    string carrera;
+    string curso;
+} alumno;
 
 int menu()
 {
@@ -63,22 +68,24 @@ bool buscar_usuario(string &usuario, string &contrasena)
     lectura.open(".//Profesor.txt", ios::in);
 
     while (lectura.good() && !lectura.eof() && !encontrado) {
-        lectura >> profesor.usuario;
-        lectura >> profesor.contrasena;
-        lectura >> profesor.nombre1;
-        lectura >> profesor.nombre2;
-        lectura >> profesor.apellido_paterno;
-        lectura >> profesor.apellido_materno;
+        lectura >> profesor.credenciales.usuario;
+        lectura >> profesor.credenciales.contrasena;
+        lectura >> profesor.datos_personales.primer_nombre;
+        lectura >> profesor.datos_personales.segundo_nombre;
+        lectura >> profesor.datos_personales.apellido_paterno;
+        lectura >> profesor.datos_personales.apellido_materno;
         lectura >> profesor.departamento;
         lectura >> profesor.curso;
 
-        if (usuario == profesor.usuario && contrasena == profesor.contrasena) {
+        if (usuario == profesor.credenciales.usuario && contrasena == profesor.credenciales.contrasena) {
             encontrado = true;
             agregar_espacio(profesor.departamento);
             agregar_espacio(profesor.curso);
             break;
         }
     }
+    
+    lectura.close();
     return encontrado;
 }
 
@@ -107,6 +114,14 @@ void iniciar_sesion(bool &ingresado, int &intento)
 int submenu2()
 {
     int opc2;
+
+    limpiar_ventana();
+    cout << "*******************************************************" << endl;
+    cout << "\t\t Bienvenido al sistema \n" << endl;
+    cout << "Curso     : " << profesor.curso << endl;
+    cout << "Nombres   : " << profesor.datos_personales.primer_nombre << " " << profesor.datos_personales.segundo_nombre << endl;
+    cout << "Apellidos : " << profesor.datos_personales.apellido_paterno << " " << profesor.datos_personales.apellido_materno << endl;
+
     cout << "\n[1] Tomar Asistencia" << endl;
     cout << "[2] Ingresar Notas" << endl;
     cout << "[3] Salir" << endl;
@@ -118,8 +133,33 @@ int submenu2()
 
 void asistencia()
 {
-    ifstream Asistencia;
+    fstream Asistencia;
+    // long codigo;
+    string name1;
+    string name2;
+    string apellido_paterno;
+    string apellido_materno;
+    char tmp;
+    Asistencia.open(".//Asistencia.txt", ios::in | ios::out);
+    
+    limpiar_ventana();
+    cout << "\t\t Asistencia" << endl;
+    cout << "*******************************************************" << endl;
+    cout << " Código \t     Nombres y Apellidos \t A|T|F" << endl;
+    while (!Asistencia.eof() && Asistencia.good()) {
+        Asistencia >> alumno.codigo;
+        Asistencia >> alumno.datos_personales.primer_nombre;
+        Asistencia >> alumno.datos_personales.segundo_nombre;
+        Asistencia >> alumno.datos_personales.apellido_paterno;
+        Asistencia >> alumno.datos_personales.apellido_materno;
+        Asistencia >> alumno.carrera;
+        Asistencia >> alumno.curso;
 
+        cout << alumno.codigo << "\t" << alumno.datos_personales.primer_nombre << " " << alumno.datos_personales.segundo_nombre << " " << alumno.datos_personales.apellido_paterno << " " << alumno.datos_personales.segundo_nombre << "\t ";
+        cin >> tmp;
+    }
+    cin.get();
+    cin.get();
 }
 
 int main()
@@ -141,7 +181,6 @@ int main()
             case 2: {
                 string usuario;
                 string contrasena;
-                
                 int intento = 3;
                 bool ingresado = false;
                 cin.ignore();
@@ -152,19 +191,17 @@ int main()
                 } while (intento != 0 && ingresado == false);
 
                 if (ingresado) {
-                    limpiar_ventana();
-                    cout << "*******************************************************" << endl;
-                    cout << "\t\t Bienvenido al sistema \n" << endl;
-                    cout << "Curso     : " << profesor.curso << endl;
-                    cout << "Nombres   : " << profesor.nombre1 << " " << profesor.nombre2 << endl;
-                    cout << "Apellidos : " << profesor.apellido_paterno << " " << profesor.apellido_materno << endl;
-                    
                     int opc2;
                     do {
                         opc2 = submenu2();
+
                         switch (opc2) {
                             case 1: {
-                                
+                                asistencia();
+                            } break;
+
+                            case 2: {
+                            
                             } break;
                         }
                     } while (opc2 != 3);
