@@ -1,6 +1,6 @@
-23200040   Pieers Fernando     Pachas Auris
-23200024   Valeria Alexandra   Flores Cortez
-23200062   Keyla Noemi         Sihuacollo Sierra
-23200061   Yajhaira Dayana     Santos Siguenza
-23200153   Emily Andrea        Cerna Aguilar
-23200018   Bruce Javier        Cordova Sandoval
+23200040   Pieers Fernando     Pachas Auris        
+23200024   Valeria Alexandra   Flores Cortez       
+23200062   Keyla Noemi         Sihuacollo Sierra   
+23200061   Yajhaira Dayana     Santos Siguenza     
+23200153   Emily Andrea        Cerna Aguilar       
+23200018   Bruce Javier        Cordova Sandoval     
