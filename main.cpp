@@ -2,10 +2,22 @@
 #include <fstream>
 #include <cstring>
 #include <locale.h>
+#include <iomanip>
+#include <chrono>
+#include <ctime>
 
 #include "plug.hpp"
 
 using namespace std;
+
+struct Fecha {
+    int dia;
+    int mes;
+    int anio;
+    int hora;
+    int minutos;
+    int segundos;
+};
 
 struct Usuario {
     string usuario;
@@ -107,7 +119,7 @@ void iniciar_sesion(bool &ingresado, int &intento)
         intento--;
         cout << "\nUsuario y/o clave son incorrectos" << endl;
         cout << "\nLe queda " << intento << " intentos";
-        cin.get();
+        cin.ignore();
     }
 }
 
@@ -131,10 +143,54 @@ int submenu2()
     return opc2;
 }
 
+void fecha_hoy()
+{
+    auto ahora = chrono::system_clock::now();
+    time_t tiempo_actual = chrono::system_clock::to_time_t(ahora);
+    tm *local_time = localtime(&tiempo_actual);
+    cout << put_time(local_time, "%d/%m/%Y %H:%M") << endl;
+}
+
+void notas()
+{
+    fstream Notas;
+    string codigo;
+    float EP;
+    float EC;
+    float EF;
+    float PF;
+    Notas.open(".//Notas.txt", ios::in | ios::out);
+
+    limpiar_ventana();
+    Notas >> codigo;
+    while (Notas.good() && !Notas.eof()) {        
+        cout << "\t\t Ingreso de Notas \t";
+        fecha_hoy();
+        cout << "****************************************************************" << endl;        
+        cout << "Alumno: " << codigo << endl;
+        cout << "\nIngrese la nota del examen parcial: ";
+        cin >> EP;
+        cout << "Ingrese la nota del evaluación continuas: ";
+        cin >> EC;
+        cout << "Ingrese la nota del examen final : ";
+        cin >> EF;
+
+        PF = (0.3*EP) + (0.4*EC) + (0.3*EF);
+        cout << fixed << setprecision(3);
+        cout << "\nSu Promedio Final es: " << PF << endl;
+        cin.ignore();
+        cin.get();
+        limpiar_ventana();
+
+        Notas >> codigo;
+    }
+    
+    
+}
+
 void asistencia()
 {
     fstream Asistencia;
-    // long codigo;
     string name1;
     string name2;
     string apellido_paterno;
@@ -143,23 +199,36 @@ void asistencia()
     Asistencia.open(".//Asistencia.txt", ios::in | ios::out);
     
     limpiar_ventana();
-    cout << "\t\t Asistencia" << endl;
-    cout << "*******************************************************" << endl;
-    cout << " Código \t     Nombres y Apellidos \t A|T|F" << endl;
+    cout << "\t\t Asistencia \t";
+    fecha_hoy(); 
+    cout << "\n****************************************************************" << endl;
+    cout << " Código \t     Apellidos y Nombres       \t        A|T|F" << endl;  
+
+    Asistencia >> alumno.codigo;
+    Asistencia >> alumno.datos_personales.primer_nombre;
+    Asistencia >> alumno.datos_personales.segundo_nombre;
+    Asistencia >> alumno.datos_personales.apellido_paterno;
+    Asistencia >> alumno.datos_personales.apellido_materno;
+
     while (!Asistencia.eof() && Asistencia.good()) {
+        cout << left << setw(10) << alumno.codigo << "\t" 
+             << setw(15) << alumno.datos_personales.apellido_paterno + " " +  alumno.datos_personales.apellido_materno + ", " 
+             << setw(20) << alumno.datos_personales.primer_nombre + " " + alumno.datos_personales.segundo_nombre 
+             << "\t";
+             cin >> tmp;
+
         Asistencia >> alumno.codigo;
         Asistencia >> alumno.datos_personales.primer_nombre;
         Asistencia >> alumno.datos_personales.segundo_nombre;
         Asistencia >> alumno.datos_personales.apellido_paterno;
         Asistencia >> alumno.datos_personales.apellido_materno;
-        Asistencia >> alumno.carrera;
-        Asistencia >> alumno.curso;
 
-        cout << alumno.codigo << "\t" << alumno.datos_personales.primer_nombre << " " << alumno.datos_personales.segundo_nombre << " " << alumno.datos_personales.apellido_paterno << " " << alumno.datos_personales.segundo_nombre << "\t ";
-        cin >> tmp;
-    }
-    cin.get();
-    cin.get();
+        if (Asistencia.eof()) {
+            cout << "\nAsistencia completada" << endl;
+            cin.get();
+            cin.get();
+        }
+    }    
 }
 
 int main()
@@ -188,7 +257,7 @@ int main()
                 do {
                     limpiar_ventana();
                     iniciar_sesion(ingresado, intento);
-                } while (intento != 0 && ingresado == false);
+                } while (intento != 0 && !ingresado);
 
                 if (ingresado) {
                     int opc2;
@@ -199,17 +268,20 @@ int main()
                             case 1: {
                                 asistencia();
                             } break;
-
                             case 2: {
-                            
+                                notas();
                             } break;
                         }
                     } while (opc2 != 3);
                 }
+            } break;
 
+            default: {
+                cout << "\n\t\tError: Opción no válida" << endl; 
+                cout << "\nPresione enter para volver"; 
                 cin.ignore();
                 cin.get();
-            } break;
+            }
         }
     } while (opc != 4);
     
