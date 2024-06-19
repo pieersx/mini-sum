@@ -6,9 +6,20 @@
 #include <chrono>
 #include <ctime>
 
-#include "plug.hpp"
+// #include "plug.hpp"
 
 using namespace std;
+
+void limpiar_ventana()
+{
+
+#ifndef _WIN32
+    system("clear");
+#else 
+    system("cls");
+#endif
+
+}
 
 struct Fecha {
     int dia;
