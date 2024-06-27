@@ -1,6 +1,6 @@
-23200040   Pieers Fernando     Pachas Auris        Ingeniería_de_Sistemas   Programación_de_Computadoras_I
-23200024   Valeria Alexandra   Flores Cortez       Ingeniería_de_Sistemas   Programación_de_Computadoras_I
-23200062   Keyla Noemi         Sihuacollo Sierra   Ingeniería_de_Sistemas   Programación_de_Computadoras_I
-23200061   Yajhaira Dayana     Santos Siguenza     Ingeniería_de_Sistemas   Programación_de_Computadoras_I
-23200153   Emily Andrea        Cerna Aguilar       Ingeniería_de_Sistemas   Programación_de_Computadoras_I
-23200018   Bruce Javier        Cordova Sandoval    Ingeniería_de_Sistemas   Programación_de_Computadoras_I 
+23200040   Pieers40     Pieers Fernando     Pachas Auris        Ingeniería_de_Sistemas   Programación_de_Computadoras_I
+23200024   Valeria24    Valeria Alexandra   Flores Cortez       Ingeniería_de_Sistemas   Programación_de_Computadoras_I
+23200062   Keyla62      Keyla Noemi         Sihuacollo Sierra   Ingeniería_de_Sistemas   Programación_de_Computadoras_I
+23200061   Yajhaira61   Yajhaira Dayana     Santos Siguenza     Ingeniería_de_Sistemas   Programación_de_Computadoras_I
+23200153   Emily153     Emily Andrea        Cerna Aguilar       Ingeniería_de_Sistemas   Programación_de_Computadoras_I
+23200018   Bruce18      Bruce Javier        Cordova Sandoval    Ingeniería_de_Sistemas   Programación_de_Computadoras_I 
