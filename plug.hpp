@@ -11,11 +11,17 @@ void limpiar_ventana();
 // Menu principal
 int menu();
 
+
+// Submenu caso 1
+int submenu1();
+
 // Submenu caso 2
 int submenu2();
 
+// Submenu caso 3
 int submenu3();
 
+// Submenu caso 4
 int submenu4();
 
 // Quitar "_" y agregar espacio " "
@@ -43,17 +49,22 @@ void notas();
 // Funcion registrar asistencias
 void asistencia();
 
-int submenu1();
-
+// Mostrar las asitencias de los alumnos
 void mostrar_asistencia();
 
+// Mostrar las notas de los alumnos
 void mostrar_notas();
 
+// CRUD -> Crear un nuevo alumno
 void crear_alumno();
 
+// CRUD -> Leer un nuevo alumno
 void leer_alumno();
 
+// CRUD -> Actualizar un nuevo alumno
 void actualizar_alumno();
 
+// CRUD -> Eliminar un nuevo alumno
+void eliminar_alumno();
 
 #endif // PLUG_HPP_
