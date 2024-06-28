@@ -223,7 +223,7 @@ int submenu4()
     cout << "[4] Apellidos" << endl;
     cout << "[5] Carrera Profesional" << endl;
     cout << "[6] Asignatura" << endl;
-    cout << "[7] Salir" << endl;
+    cout << "[7] Salir y Guardar" << endl;
     cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
@@ -565,7 +565,7 @@ void actualizar_alumno()
     string apellidos;
     bool encontrado = false;
     Actualizar.open("./Alumnos.txt", ios::in);
-    Actualizar_Temporal.open("./Alumnos temporal.txt", ios::out);
+    Actualizar_Temporal.open("./Alumnos Temporal.txt", ios::out);
 
     cin.ignore();
     cout << "\n****************************************************************************" << endl;    
@@ -580,16 +580,16 @@ void actualizar_alumno()
     cout << "Ingrese Apellidos del estudiante: ";
     getline(cin, apellidos);
 
-    while (!Actualizar.eof() && Actualizar.good()) {
-        Actualizar >> estudiante.credenciales.usuario;
-        Actualizar >> estudiante.credenciales.contrasena;
-        Actualizar >> estudiante.datos_personales.primer_nombre;
-        Actualizar >> estudiante.datos_personales.segundo_nombre;
-        Actualizar >> estudiante.datos_personales.apellido_paterno;
-        Actualizar >> estudiante.datos_personales.apellido_materno;
-        Actualizar >> estudiante.carrera;
-        Actualizar >> estudiante.curso;
+    Actualizar >> estudiante.credenciales.usuario;
+    Actualizar >> estudiante.credenciales.contrasena;
+    Actualizar >> estudiante.datos_personales.primer_nombre;
+    Actualizar >> estudiante.datos_personales.segundo_nombre;
+    Actualizar >> estudiante.datos_personales.apellido_paterno;
+    Actualizar >> estudiante.datos_personales.apellido_materno;
+    Actualizar >> estudiante.carrera;
+    Actualizar >> estudiante.curso;
 
+    while (!Actualizar.eof() && Actualizar.good()) {
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
@@ -597,22 +597,26 @@ void actualizar_alumno()
             nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre &&
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno) {
             encontrado = true;
-        }
 
-        if (encontrado) {
             int opc;
-            cout << "\n****************************************************************************" << endl;
-            cout << "\t\t\tEstudiante Encontrado" << endl;
             do {
+                limpiar_ventana();
+
+                cout << "\n****************************************************************************" << endl;
+                cout << "\t\t\t  Estudiante Encontrado" << endl;  
                 opc = submenu4();
+
                 switch (opc) {
                     case 1: {
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nUsuario actual: " << estudiante.credenciales.usuario << endl;
+                        cout << "\nUsuario actual          : " << estudiante.credenciales.usuario << endl;
                         cout << "Ingrese el nuevo usuario: ";
                         getline(cin, codigo);
+
+                        cout << "\nDatos del estudiante actualizados y almacenados." << endl;
+                        cin.get();
 
                         break;
                     }
@@ -620,9 +624,12 @@ void actualizar_alumno()
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nContraseña actual: " << estudiante.credenciales.contrasena << endl;
+                        cout << "\nContraseña actual          : " << estudiante.credenciales.contrasena << endl;
                         cout << "Ingrese la nueva contraseña: ";
                         getline(cin, estudiante.credenciales.contrasena);
+
+                        cout << "\nDatos del estudiante actualizados y almacenados." << endl;
+                        cin.get();
 
                         break;
                     }
@@ -630,9 +637,12 @@ void actualizar_alumno()
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nNombres actual: " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
+                        cout << "\nNombres actual            : " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
                         cout << "Ingrese los nuevos nombres: ";
                         getline(cin, nombres);
+
+                        cout << "\nDatos del estudiante actualizados y almacenados." << endl;
+                        cin.get();
 
                         break;
                     }
@@ -640,9 +650,12 @@ void actualizar_alumno()
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nApellidos actual: " << estudiante.datos_personales.apellido_paterno << " " << estudiante.datos_personales.apellido_materno << endl;
+                        cout << "\nApellidos actual            : " << estudiante.datos_personales.apellido_paterno << " " << estudiante.datos_personales.apellido_materno << endl;
                         cout << "Ingrese los nuevos apellidos: ";
                         getline(cin, apellidos);
+
+                        cout << "\nDatos del estudiante actualizados y almacenados." << endl;
+                        cin.get();
 
                         break;
                     }
@@ -650,10 +663,12 @@ void actualizar_alumno()
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nCarrera actual: " << estudiante.carrera << endl;
+                        cout << "\nCarrera actual          : " << estudiante.carrera << endl;
                         cout << "Ingrese la nueva carrera: ";
                         getline(cin, estudiante.carrera);
-                        quitar_espacio(estudiante.carrera);
+
+                        cout << "\nDatos del estudiante actualizados y almacenados." << endl;
+                        cin.get();
 
                         break;
                     }
@@ -661,23 +676,30 @@ void actualizar_alumno()
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nAsignatura actual: " << estudiante.curso << endl;
+                        cout << "\nAsignatura actual          : " << estudiante.curso << endl;
                         cout << "Ingrese la nueva asignatura: ";
                         getline(cin, estudiante.curso);
-                        quitar_espacio(estudiante.curso);
+
+                        cout << "\nDatos del estudiante actualizados y almacenados." << endl;
+                        cin.get();
 
                         break;
                     }
                     case 7: break;
 
                     default: {
-                        cout << "\n\tOpción no válida" << endl; 
+                        cout << "\n\t   Opción no válida" << endl; 
                         cout << "Presione enter para volver selecionar..."; 
                         cin.ignore();
                         cin.get();
+
+                        break;
                     }
                 }
             } while (opc != 7);
+
+            quitar_espacio(estudiante.carrera);
+            quitar_espacio(estudiante.curso);
 
             Actualizar_Temporal << codigo << "   ";
             Actualizar_Temporal << estudiante.credenciales.contrasena << "   ";
@@ -686,27 +708,119 @@ void actualizar_alumno()
             Actualizar_Temporal << estudiante.carrera << "   ";
             Actualizar_Temporal << estudiante.curso << endl;
 
-            cout << "\nDatos del alumno actualizados y almacenados." << endl;
-            cin.get();
         } else {
+            quitar_espacio(estudiante.carrera);
+            quitar_espacio(estudiante.curso);
+
             Actualizar_Temporal << estudiante.credenciales.usuario << "   ";
             Actualizar_Temporal << estudiante.credenciales.contrasena << "   ";
-            Actualizar_Temporal << estudiante.datos_personales.primer_nombre << "   ";
+            Actualizar_Temporal << estudiante.datos_personales.primer_nombre << " ";
             Actualizar_Temporal << estudiante.datos_personales.segundo_nombre << "   ";
-            Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << "   ";
+            Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << " ";
             Actualizar_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Actualizar_Temporal << estudiante.carrera << "   ";
             Actualizar_Temporal << estudiante.curso << endl;
         }
+
+        Actualizar >> estudiante.credenciales.usuario;
+        Actualizar >> estudiante.credenciales.contrasena;
+        Actualizar >> estudiante.datos_personales.primer_nombre;
+        Actualizar >> estudiante.datos_personales.segundo_nombre;
+        Actualizar >> estudiante.datos_personales.apellido_paterno;
+        Actualizar >> estudiante.datos_personales.apellido_materno;
+        Actualizar >> estudiante.carrera;
+        Actualizar >> estudiante.curso;
+       
     }
 
     if (!encontrado) {
-        cout << "No se encontró ningún alumno con el código " << endl;
+        cout << "\nNo se encontró ningún estudiante con esos datos" << endl;
     }
 
     Actualizar.close();
-    Actualizar_Temporal.close();    
+    Actualizar_Temporal.close();
+    // remove("./Alumnos.txt");
+    // rename("./Alumnos temporal.txt", "./Alumnos.txt");
+
+    cin.get();
+}
+
+void eliminar_alumno() 
+{
+    ifstream Alummno;
+    ofstream Alummno_Temporal;
+    string codigo;
+    string nombres;
+    string apellidos;
+    bool encontrado;
+
+    Alummno.open("./Alumnos.txt", ios::in);
+    Alummno_Temporal.open("./Alumnos Temporal.txt", ios::out);
 
     cin.ignore();
+    cout << "\n****************************************************************************" << endl;    
+    cout << "\t\tIngrese los datos para eliminar al estudiante" << endl;    
+
+    cout << "\nIngrese Código del estudiante   : ";
+    getline(cin, codigo);
+    
+    cout << "Ingrese Nombres del estudiante  : ";
+    getline(cin, nombres);
+
+    cout << "Ingrese Apellidos del estudiante: ";
+    getline(cin, apellidos);
+
+    Alummno >> estudiante.credenciales.usuario;
+    Alummno >> estudiante.credenciales.contrasena;
+    Alummno >> estudiante.datos_personales.primer_nombre;
+    Alummno >> estudiante.datos_personales.segundo_nombre;
+    Alummno >> estudiante.datos_personales.apellido_paterno;
+    Alummno >> estudiante.datos_personales.apellido_materno;
+    Alummno >> estudiante.carrera;
+    Alummno >> estudiante.curso;
+
+    while (!Alummno.eof() && Alummno.good()) {
+        agregar_espacio(estudiante.carrera);
+        agregar_espacio(estudiante.curso);
+
+        if (codigo == estudiante.credenciales.usuario && 
+            nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre &&
+            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno) {
+            encontrado = true;
+        } else {
+            quitar_espacio(estudiante.carrera);
+            quitar_espacio(estudiante.curso);
+
+            Alummno_Temporal << estudiante.credenciales.usuario << "   ";
+            Alummno_Temporal << estudiante.credenciales.contrasena << "   ";
+            Alummno_Temporal << estudiante.datos_personales.primer_nombre << " ";
+            Alummno_Temporal << estudiante.datos_personales.segundo_nombre << "   ";
+            Alummno_Temporal << estudiante.datos_personales.apellido_paterno << " ";
+            Alummno_Temporal << estudiante.datos_personales.apellido_materno << "   ";
+            Alummno_Temporal << estudiante.carrera << "   ";
+            Alummno_Temporal << estudiante.curso << endl;
+        }
+
+        Alummno >> estudiante.credenciales.usuario;
+        Alummno >> estudiante.credenciales.contrasena;
+        Alummno >> estudiante.datos_personales.primer_nombre;
+        Alummno >> estudiante.datos_personales.segundo_nombre;
+        Alummno >> estudiante.datos_personales.apellido_paterno;
+        Alummno >> estudiante.datos_personales.apellido_materno;
+        Alummno >> estudiante.carrera;
+        Alummno >> estudiante.curso;
+    }
+
+    if (encontrado) {
+        cout << "\nEstudiante eliminado del sistema" << endl;
+    } else {
+        cout << "\nNo se encontró ningún estudiante con esos datos" << endl;
+    }
+
+    Alummno.close();
+    Alummno_Temporal.close();
+    // remove("./Alumnos.txt");
+    // rename("./Alumnos Temporal.txt", "./Alumnos.txt");
+
     cin.get();
 }
