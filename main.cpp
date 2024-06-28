@@ -110,6 +110,11 @@ int main()
                             actualizar_alumno();
                             break;
                         }
+                        case 4: {
+                            limpiar_ventana();
+                            eliminar_alumno();
+                        }
+                        case 5: break;
                         default: {
                             cout << "\n\tOpción no válida" << endl; 
                             cout << "Presione enter para volver selecionar..."; 
