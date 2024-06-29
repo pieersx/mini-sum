@@ -4,4 +4,4 @@ set -xe
 
 CFLAGS="-Wall -Wextra -Werror -pedantic -std=c++17 -ggdb"
 
-clang++ $CFLAGS -o main main.cpp ./plug.cpp
+g++ $CFLAGS -o sum main.cpp ./plug.cpp
