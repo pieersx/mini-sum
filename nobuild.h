@@ -84,6 +84,7 @@ LPSTR GetLastErrorAsString(void);
 #include <stdarg.h>
 #include <string.h>
 #include <errno.h>
+#include <linux/limits.h>
 
 #define FOREACH_ARRAY(type, elem, array, body)  \
     for (size_t elem_##index = 0;                           \
