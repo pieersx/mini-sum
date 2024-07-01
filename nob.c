@@ -27,7 +27,7 @@ void compile_cpp(const char *filename)
     Cstr build_path = PATH("build", NOEXT(filename));
 
 #ifndef _WIN32
-    CMD("cc", CFLAGS, "-o", build_path, src_path);
+    CMD("g++", CFLAGS, "-o", build_path, src_path);
 #else
     CMD("g++.exe", CFLAGS, "-o", build_path, src_path);
 #endif // _WIN32
@@ -40,7 +40,7 @@ void compile_link_cpp(const char *main_file, const char *lib_file)
     Cstr build_path = PATH("build", NOEXT(main_file));
 
 #ifndef _WIN32
-    CMD("cc", CFLAGS, "-o", build_path, src_path, lib_src_path);
+    CMD("g++", CFLAGS, "-o", build_path, src_path, lib_src_path);
 #else
     CMD("g++.exe", CFLAGS, "-o", build_path, src_path, lib_src_path);
 #endif // _WIN32
