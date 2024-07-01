@@ -84,7 +84,6 @@ LPSTR GetLastErrorAsString(void);
 #include <stdarg.h>
 #include <string.h>
 #include <errno.h>
-#include <linux/limits.h>
 
 #define FOREACH_ARRAY(type, elem, array, body)  \
     for (size_t elem_##index = 0;                           \
@@ -953,6 +952,8 @@ Cstr path_get_current_dir()
 
     return buffer;
 #else
+#include <linux/limits.h>
+
     char *buffer = (char*) malloc(PATH_MAX);
     if (getcwd(buffer, PATH_MAX) == NULL) {
         PANIC("could not get current directory: %s", strerror(errno));
