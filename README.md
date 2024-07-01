@@ -52,7 +52,7 @@ Cualquier terminal o consola de su distribución
     ``` 
 Ejecute la compilación
 * ```bash
-    .\nobuild
+    ./nobuild
     ```
 Entramos a la carpeta build que fue creado por la ejecución de la compilación anterior
 * ```bash
