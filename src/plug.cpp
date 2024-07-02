@@ -12,6 +12,9 @@
 #define PATH_ASISTENCIA "./Asistencia.txt"
 #define PATH_NOTAS "./Notas.txt"
 
+#define N "\u00F1"
+#define O "\u00F3"
+
 struct Fecha {
     int dia;
     int mes;
@@ -249,7 +252,7 @@ void iniciar_sesion_estudiante(bool &ingresado, int &intento)
     string contrasena;
 
     cout << "**********************************************" << endl;
-    cout << "\t\tIniciar Sesión " << endl;
+    printf("\t\tIniciar Sesi%sn", O);
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
     cout << "\tContraseña: ";
