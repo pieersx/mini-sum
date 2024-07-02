@@ -22,8 +22,16 @@ En cualquier terminal o consola preferido, el compilador [MinGW](https://nuwen.n
 * ```bash
     gcc -o nobuild nob.c
     ``` 
+Ejecute la compilación
 * ```bash
-    .\nobuild && cd build
+    .\nobuild
+    ``` 
+Entramos a la carpeta build que fue creado por la ejecución de la compilación anterior
+* ```bash
+    cd build
+    ```
+Ejecutamos el main en la carpeta build
+* ```bash
     .\main.exe
     ```  
 
@@ -44,6 +52,13 @@ Cualquier terminal o consola de su distribución
     ``` 
 Ejecute la compilación
 * ```bash
-    ./nobuild && cd build
+    ./nobuild
+    ```
+Entramos a la carpeta build que fue creado por la ejecución de la compilación anterior
+* ```bash
+    cd build
+    ```
+Ejecutamos el main en la carpeta build
+* ```bash
     ./main
     ```  
