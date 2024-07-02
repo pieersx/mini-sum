@@ -11,6 +11,9 @@
     #define U "\u00FA"
     #define N "\u00F1"
 #else
+#include <wchar.h>
+#include <locale.h>
+    #define void setlocale(LC_ALL, "pt");
     #define A "\xA0"
     #define E "\x82"
     #define I "\xA1"
