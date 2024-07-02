@@ -3,17 +3,14 @@
 #include <cstring>
 #include <ctime>
 #include <iomanip>
-#include <unistd.h>
 
 #include "plug.hpp"
 
 #define PATH_ALUMNO "./Alumnos.txt"
+#define PATH_ALUMNO_TEMPORAL "./Alumnos Temporal.txt"
 #define PATH_PROFESOR "./Profesor.txt"
 #define PATH_ASISTENCIA "./Asistencia.txt"
 #define PATH_NOTAS "./Notas.txt"
-
-#define N "\u00F1"
-#define O "\u00F3"
 
 struct Fecha {
     int dia;
@@ -52,7 +49,6 @@ struct Estudiante {
     string curso;
 } estudiante;
 
-using namespace std;
 
 void limpiar_ventana()
 {
@@ -64,6 +60,8 @@ void limpiar_ventana()
 #endif
 
 }
+
+using namespace std;
 
 void portada()
 {
@@ -127,7 +125,7 @@ int menu()
     cout << "[2] Profesor" << endl;
     cout << "[3] Registrar" << endl;
     cout << "[4] Salir" << endl;
-    cout << "\n\tIngrese una opción -> ";
+    cout << "\n\tIngrese una opci" O "n -> ";
     cin >> opc;
 
     return opc;
@@ -148,7 +146,7 @@ int submenu1()
     cout << "\n[1] Asistencia" << endl;
     cout << "[2] Notas" << endl;
     cout << "[3] Salir " << endl;
-    cout << "\n\tIngrese una opción -> ";
+    cout << "\n\tIngrese una opci" O "n -> ";
     cin >> opc;
 
     return opc;
@@ -168,7 +166,7 @@ int submenu2()
     cout << "\n[1] Tomar Asistencia" << endl;
     cout << "[2] Ingresar Notas" << endl;
     cout << "[3] Salir" << endl;
-    cout << "\n\tIngrese una opción -> ";
+    cout << "\n\tIngrese una opci" O "n -> ";
     cin >> opc;
 
     return opc;
@@ -184,7 +182,7 @@ int submenu3()
     cout << "[3] Actualizar datos de un alumno" << endl;
     cout << "[4] Eliminar datos de un alumno" << endl;
     cout << "[5] Salir" <<endl;
-    cout << "\n\tIngrese una opción -> ";
+    cout << "\n\tIngrese una opci" O "n -> ";
     cin >> opc;
 
     return opc;
@@ -196,13 +194,13 @@ int submenu4()
     cout << "****************************************************************************" << endl;
     cout << "\t\tSeleccione el dato que desea actualizar" << endl;
     cout << "[1] Usuario" << endl;
-    cout << "[2] Contraseña" << endl;
+    cout << "[2] Contrase" N "a" << endl;
     cout << "[3] Nombres" << endl;
     cout << "[4] Apellidos" << endl;
     cout << "[5] Carrera Profesional" << endl;
     cout << "[6] Asignatura" << endl;
     cout << "[7] Salir y Guardar" << endl;
-    cout << "\n\tIngrese una opción -> ";
+    cout << "\n\tIngrese una opci" O "n -> ";
     cin >> opc;
 
     return opc;
@@ -252,10 +250,10 @@ void iniciar_sesion_estudiante(bool &ingresado, int &intento)
     string contrasena;
 
     cout << "**********************************************" << endl;
-    printf("\t\tIniciar Sesi%sn", O);
+    cout << "\t\tIniciar Sesi" O "n " << endl;
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
-    cout << "\tContraseña: ";
+    cout << "\tContrase" N "a: ";
     getline(cin, contrasena);
 
     if (buscar_estudiante(usuario, contrasena)) {
@@ -274,12 +272,12 @@ void iniciar_sesion_profesor(bool &ingresado, int &intento)
     string contrasena;
 
     cout << "**********************************************" << endl;
-    cout << "\t\tIniciar Sesión " << endl;
+    cout << "\t\tIniciar Sesi" O "n " << endl;
 
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
 
-    cout << "\tContraseña: ";
+    cout << "\tContrase" N "a: ";
     getline(cin, contrasena);
 
     if (buscar_profesor(usuario, contrasena)) {
@@ -351,18 +349,17 @@ bool buscar_estudiante(string &usuario, string &contrasena)
 
 void mostrar_asistencia()
 {
-    ifstream Asistencia;
     string codigo;
     char asistencia[16];
     bool encontrado = false;
-    // float asistencias = 0;
     float contador = 0;
     float contador2 = 0;
     float contador3 = 0;
-    Asistencia.open("./Asistencia.txt", ios::in);
+    // float asistencias = 0;
+
+    ifstream Asistencia(PATH_ASISTENCIA, ios::in);    
     
-    
-    cout << "\t\t\tMis Asistencias\t\t\t"; fecha_hoy(); cout << endl;
+    cout << "\t\t\tMis Asistencias\t\t\t"; fecha_hoy();
     cout << "\n\t   Asignaturas \t\t\t A(Asistio) / T(Tardanza) / F(Falta) ";
     cout << "\n****************************************************************************" << endl;
 
@@ -406,7 +403,7 @@ void mostrar_notas()
     ifstream Notas(PATH_NOTAS, ios::in);
 
     cout << "\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
-    cout << "\n\t   Asignaturas \t\t\t\t Calificación";
+    cout << "\n\t   Asignaturas \t\t\t\t Calificaci" O "n";
     cout << "\n****************************************************************************" << endl;
 
     while (!Notas.eof() && Notas.good() && !encontrado) {
@@ -453,9 +450,9 @@ void registrar_notas()
         cout << "Asignatura: " << profesor.curso << endl;
         cout << "\nCalificación de Examen Parcial: ";
         cin >> EP;
-        cout << "Calificación de Evaluaciones Continuas e Informes: ";
+        cout << "Calificaci" O "n de Evaluaciones Continuas e Informes: ";
         cin >> EC;
-        cout << "Calificación de Examen Final: ";
+        cout << "Calificaci" O "n de Examen Final: ";
         cin >> EF;
 
         if ((EP >= 0 && EP <= 20) && (EC >= 0 && EC <= 20) && (EF >= 0 && EF <= 20)) {
@@ -498,8 +495,8 @@ void registrar_asistencia()
     fstream Asistencia(PATH_ASISTENCIA, ios::in | ios::out);
     
     cout << "\t\t Asistencia \t\t\t"; fecha_hoy(); 
-    cout << "\n****************************************************************" << endl;
-    cout << " Código \t     Apellidos y Nombres       \t        A|T|F" << endl;  
+    cout << "****************************************************************" << endl;
+    cout << " C" O "digo \t     Apellidos y Nombres       \t        A|T|F" << endl;  
 
     Asistencia >> estudiante.codigo;
     Asistencia >> estudiante.datos_personales.primer_nombre;
@@ -539,7 +536,7 @@ void crear_alumno()
     cout << "\n\tIngrese un Usuario: ";
     getline(cin, estudiante.credenciales.usuario);
 
-    cout << "\tIngrese una Contraseña: ";
+    cout << "\tIngrese una Contrase" N "a: ";
     getline(cin, estudiante.credenciales.contrasena);
 
     cout << "\n\tNombres: ";
@@ -585,18 +582,18 @@ void crear_alumno()
 
 void leer_alumno()
 {
-    ifstream Alumno;
     string codigo;
     string nombres;
     string apellidos;
     bool encontrado = false;
-    Alumno.open("./Alumnos.txt", ios::in);
+
+    ifstream Alumno(PATH_ALUMNO, ios::in);
 
     cin.ignore();
     cout << "\n****************************************************************************" << endl;    
     cout << "\t\tIngrese los datos para leer al estudiante" << endl;    
 
-    cout << "\nIngrese Código del estudiante   : ";
+    cout << "\nIngrese C" O "digo del estudiante   : ";
     getline(cin, codigo);
     
     cout << "Ingrese Nombres del estudiante  : ";
@@ -645,20 +642,19 @@ void leer_alumno()
 
 void actualizar_alumno()
 {
-    ifstream Actualizar;
-    ofstream Actualizar_Temporal;
     string codigo;
     string nombres;
     string apellidos;
     bool encontrado = false;
-    Actualizar.open("./Alumnos.txt", ios::in);
-    Actualizar_Temporal.open("./Alumnos Temporal.txt", ios::out);
+
+    ifstream Actualizar(PATH_ALUMNO, ios::in);
+    ofstream Actualizar_Temporal(PATH_ALUMNO_TEMPORAL, ios::out);
 
     cin.ignore();
     cout << "\n****************************************************************************" << endl;    
     cout << "\t\tIngrese los datos para actualizar al estudiante" << endl;    
 
-    cout << "\nIngrese Código del estudiante   : ";
+    cout << "\nIngrese C" O "digo del estudiante   : ";
     getline(cin, codigo);
     
     cout << "Ingrese Nombres del estudiante  : ";
@@ -712,7 +708,7 @@ void actualizar_alumno()
                         limpiar_ventana();
 
                         cout << "\nContraseña actual          : " << estudiante.credenciales.contrasena << endl;
-                        cout << "Ingrese la nueva contraseña: ";
+                        cout << "Ingrese la nueva contrase" N "a: ";
                         getline(cin, estudiante.credenciales.contrasena);
 
                         cout << "\nDatos del estudiante actualizados y almacenados." << endl;
@@ -775,7 +771,7 @@ void actualizar_alumno()
                     case 7: break;
 
                     default: {
-                        cout << "\n\t   Opción no válida" << endl; 
+                        cout << "\n\t   Opción no v" A "lida" << endl; 
                         cout << "Presione enter para volver selecionar..."; 
                         cin.ignore();
                         cin.get();
@@ -820,34 +816,32 @@ void actualizar_alumno()
     }
 
     if (!encontrado) {
-        cout << "\nNo se encontró ningún estudiante con esos datos" << endl;
+        cout << "\nNo se encontr" O " ning" U "n estudiante con esos datos" << endl;
     }
 
     Actualizar.close();
     Actualizar_Temporal.close();
-    remove("./Alumnos.txt");
-    rename("./Alumnos Temporal.txt", "./Alumnos.txt");
+    remove(PATH_ALUMNO);
+    rename(PATH_ALUMNO_TEMPORAL, PATH_ALUMNO);
 
     cin.get();
 }
 
 void eliminar_alumno() 
 {
-    ifstream Alummno;
-    ofstream Alummno_Temporal;
     string codigo;
     string nombres;
     string apellidos;
     bool encontrado;
 
-    Alummno.open("./Alumnos.txt", ios::in);
-    Alummno_Temporal.open("./Alumnos Temporal.txt", ios::out);
+    ifstream Alummno(PATH_ALUMNO, ios::in);
+    ofstream Alummno_Temporal(PATH_ALUMNO_TEMPORAL, ios::out);
 
     cin.ignore();
     cout << "\n****************************************************************************" << endl;    
     cout << "\t\tIngrese los datos para eliminar al estudiante" << endl;    
 
-    cout << "\nIngrese Código del estudiante   : ";
+    cout << "\nIngrese C" O "digo del estudiante   : ";
     getline(cin, codigo);
     
     cout << "Ingrese Nombres del estudiante  : ";
@@ -900,13 +894,13 @@ void eliminar_alumno()
     if (encontrado) {
         cout << "\nEstudiante eliminado del sistema" << endl;
     } else {
-        cout << "\nNo se encontró ningún estudiante con esos datos" << endl;
+        cout << "\nNo se encontr" O " ning" U "n estudiante con esos datos" << endl;
     }
 
     Alummno.close();
     Alummno_Temporal.close();
-    remove("./Alumnos.txt");
-    rename("./Alumnos Temporal.txt", "./Alumnos.txt");
+    remove(PATH_ALUMNO);
+    rename(PATH_ALUMNO_TEMPORAL, PATH_ALUMNO);
 
     cin.get();
 }

@@ -1,9 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <clocale>
-#include <cstdlib>
-#include <cwchar>
+// #include <cstdlib>
 #include <iomanip>
 #include <ctime>
 
@@ -13,11 +11,9 @@ using namespace std;
 
 int main(void)
 {
-    setlocale(LC_ALL, "");
-
     int opc;    
     do {        
-        limpiar_ventana();    
+        limpiar_ventana();
         opc = menu();
 
         switch (opc) {
@@ -48,7 +44,7 @@ int main(void)
                             }                 
                             case 3: break;
                             default: {
-                                cout << "\n\tOpción no válida" << endl; 
+                                cout << "\n\tOpci" O "n no v" A "lida" << endl; 
                                 cout << "Presione enter para volver selecionar..."; 
 
                                 cin.ignore();
@@ -118,7 +114,7 @@ int main(void)
                         }
                         case 5: break;
                         default: {
-                            cout << "\n\tOpción no válida" << endl; 
+                            cout << "\n\tOpci" O "n no v" A "lida" << endl; 
                             cout << "Presione enter para volver selecionar..."; 
                             cin.ignore();
                             cin.get();
@@ -130,7 +126,7 @@ int main(void)
             case 4: break;
 
             default: {
-                cout << "\n\tOpción no válida" << endl; 
+                cout << "\n\tOpci" O "n no v" A "lida" << endl; 
                 cout << "Presione enter para volver selecionar..."; 
                 cin.ignore();
                 cin.get();

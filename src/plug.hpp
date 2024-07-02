@@ -3,10 +3,23 @@
 
 #include <string.h>
 
+#ifndef _WIN32
+    #define A "\u00E1"
+    #define E "\u00E9"
+    #define I "\u00ED"
+    #define O "\u00F3"
+    #define U "\u00FA"
+    #define N "\u00F1"
+#else
+    #define A "\xA0"
+    #define E "\x82"
+    #define I "\xA1"
+    #define O "\xA2"
+    #define U "\xA3"
+    #define N "\xA4"
+#endif // _WIN32
+
 using namespace std;
-
-
-
 
 /* 
     Funciones para el menú
@@ -36,6 +49,9 @@ int submenu4();
 
 // Declaración de la función para limpiar la ventana de la consola para windows y sistemas POSIX
 void limpiar_ventana();
+
+// Caracteres especiales para el español
+void caracteres_especiales();
 
 // Portada del SUM
 void portada();
