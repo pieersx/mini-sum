@@ -1,6 +1,0 @@
-23200040 Pieers40 Pieers_Fernando Pachas Auris Ingenieria de Software 0
-23200024 Valeria24 Valeria_Alexandra Flores Cortez Ingenieria 0
-23200062 Keyla62 Keyla_Noemi Sihuacollo Sierra Ingenieria_de_Sistemas 14.3
-23200061 Yajhaira61 Yajhaira_Dayana Santos Siguenza Ingenieria_de_Sistemas 17.03
-23200153 Emily153 Emily_Andrea Cerna Aguilar Ingenieria_de_Sistemas 12.52
-23200018 Bruce18 Bruce_Javier Cordova Sandoval Ingenieria_de_Sistemas 13.45
