@@ -3,8 +3,14 @@
 #include <cstring>
 #include <ctime>
 #include <iomanip>
+#include <unistd.h>
 
 #include "plug.hpp"
+
+#define PATH_ALUMNO "./Alumnos.txt"
+#define PATH_PROFESOR "./Profesor.txt"
+#define PATH_ASISTENCIA "./Asistencia.txt"
+#define PATH_NOTAS "./Notas.txt"
 
 struct Fecha {
     int dia;
@@ -56,15 +62,143 @@ void limpiar_ventana()
 
 }
 
+void portada()
+{
+    cout << R"(
+                                                          #####                                                                                                                                        
+                                                                #####                                                                                                                                  
+                                       ######                       ####                                                                                                                               
+                              ##################                       #####                                                                                                                           
+                          #####          ####                             #####                                                                                                                        
+                       ###               ##                                  ####                         ##     ###                                                                                   
+                    ###                 #                                      ####                   #########  ###             ##                                                                    
+                  ##                   ##       ##                               ####                 ###   ###                 ###                                                                    
+                ##                     ###################                        ####                #####     ####  ###############   #######  ##############   ########                             
+              ##                    ##########################                      ####               ########  ###  ####      ###    ###   ###  ###  ###  ####       ###                             
+             #                    ##############################                     ####                   ###  ###   #######  ###   ##########  ###  ###  ####  ########                             
+            #                  ###################################        #           ####           ###    ###  ###  ##   ###  ###    ####       ###  ###  #### ####  ###                             
+                              ###########################       ####       #           ####          #########  ##### #######   ######  ######## ##### #### ##### #########                            
+                          #####################                             #           ####                                                                                                           
+                       ### ################                          ##     ##           ###                                                                                                           
+                     ###  ##############                            ####     ##          ####                                                                                                          
+                   ###   ##############          ##############   ######     ##           ###                                                                                                          
+       #          ###    #############      ################ ############     ##          ####            ###                    ##                                                                    
+                 ###    ##############    ################################    ##           ###       ######  ######             ####                               ####                                
+      #         ###     #############    #################################    ##           ###        ####    ###                                                   ###                                
+      #         ###    ##############     ################################    ###          ####       ####    ####  #### ####  #####    #####    #####          #######    #####                       
+      #        ####    ###############          ###########################   ###          ####       ####    ####   #########  ####  #### ### #### ####      #########  #### ####                     
+      #        ####    ###################           ######################   ###          ####       ####    ####   ###  ####  #### ####      ###   ####     ###   ### ##########                     
+      #       #####    #########################         ##################  ####          ###         ###    ###    ###  ####  #### ####      ###   ###      ###   ### ####                           
+      ##      #####    ################################     ##############   ###          ####         #########     ###  ####  ####  ######## #########      #########  ########                      
+      ##      #####    ##################################    #############  ####          ####           #####      ##### #### ######   #####     ####          ### ####   #####                       
+       #       #####    ###################################   ############ #####         ####                                                                                                          
+       ##      ######   #################################     ###########  ####          ####                                                                                                          
+        ##      ######   ####### #####################       #################          ####                                                                                                           
+         #      #######   ####                              ##################         #####                                                                                                           
+         ###     #######   ##                             ###################         #####                                                          ##                       ###                      
+          ###     ########  #                          ####################          #####           ######     ######             ##              ###                        ####                     
+           ###     ######### ###                 #########################          #####              #####    #####              ##                                         ####                     
+             ##     ####################################################          #####                #####   ######   #######  ####### #### #### ####   ####### #### #####  ####  #######            
+              ###     #################################################          #####                 ###### #######   ##  ####  ####     ### ### #### ####  ###  ###  ####  ####  ##   ###           
+                ###     #############################################          #####                   ### ##### ####    #######  ####     ###     #### ####       ###  ####  ####   #######           
+                 ####     ########################################           ######                    ###  ###  ####  #### ####  ####     ###     #### ####       ###  ####  #### ####  ###           
+                   ####     ###################################           #######                    ######     ###### ##########  ##### #######  ###### ########  ########## ##### #########          
+                     #####     ############################             #######                                                                                                                        
+                        #####        ################               ########                                                                                                                           
+                           #######                             ##########                                                                                                                              
+                               ###########              #############                                                                                                                                  
+                                    ############################                                                                                                                                       
+                                              ########                                                                                                                                                 
+                                                                                                                                                                                                       
+    )";
+}
+
 int menu()
 {
     int opc;
+    
+    portada();
     cout << "*******************************************************" << endl;
     cout << "\t\t Bienvenidos al SUM" << endl;
     cout << "\n[1] Estudiante" << endl;
     cout << "[2] Profesor" << endl;
     cout << "[3] Registrar" << endl;
     cout << "[4] Salir" << endl;
+    cout << "\n\tIngrese una opción -> ";
+    cin >> opc;
+
+    return opc;
+}
+
+int submenu1() 
+{
+    int opc;
+
+    cout << "************************************************************************" << endl;
+    cout << "\tEstudiante de la Universidad Nacional Mayor de San Marcos\n" << endl;
+    cout << "Curso     : " << estudiante.curso << endl;
+    cout << "Nombres   : " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
+    cout << "Apellidos : " << estudiante.datos_personales.apellido_paterno << " " << estudiante.datos_personales.apellido_materno << endl;
+    cout << "Carrera   : " << estudiante.carrera << endl;
+    // cout << "Pondero ciclo 24-I: "  << estudiante.ponderado <<endl;
+
+    cout << "\n[1] Asistencia" << endl;
+    cout << "[2] Notas" << endl;
+    cout << "[3] Salir " << endl;
+    cout << "\n\tIngrese una opción -> ";
+    cin >> opc;
+
+    return opc;
+}
+
+int submenu2()
+{
+    int opc;
+
+    cout << "************************************************************************" << endl;
+    cout << "\tProfesor de la Universidad Nacional Mayor de San Marcos \n" << endl;
+    cout << "Curso        : " << profesor.curso << endl;
+    cout << "Nombres      : " << profesor.datos_personales.primer_nombre << " " << profesor.datos_personales.segundo_nombre << endl;
+    cout << "Apellidos    : " << profesor.datos_personales.apellido_paterno << " " << profesor.datos_personales.apellido_materno << endl;
+    cout << "Departamento : " << profesor.departamento << endl;
+
+    cout << "\n[1] Tomar Asistencia" << endl;
+    cout << "[2] Ingresar Notas" << endl;
+    cout << "[3] Salir" << endl;
+    cout << "\n\tIngrese una opción -> ";
+    cin >> opc;
+
+    return opc;
+}
+
+int submenu3()
+{
+    int opc;
+    cout << "************************************************************************" << endl;
+    cout << "\t\t\tBienvenido Super Usuario\n" << endl;
+    cout << "[1] Crear un nuevo alumno" << endl;
+    cout << "[2] Leer datos de un alumno" << endl;
+    cout << "[3] Actualizar datos de un alumno" << endl;
+    cout << "[4] Eliminar datos de un alumno" << endl;
+    cout << "[5] Salir" <<endl;
+    cout << "\n\tIngrese una opción -> ";
+    cin >> opc;
+
+    return opc;
+}
+
+int submenu4()
+{
+    int opc;
+    cout << "****************************************************************************" << endl;
+    cout << "\t\tSeleccione el dato que desea actualizar" << endl;
+    cout << "[1] Usuario" << endl;
+    cout << "[2] Contraseña" << endl;
+    cout << "[3] Nombres" << endl;
+    cout << "[4] Apellidos" << endl;
+    cout << "[5] Carrera Profesional" << endl;
+    cout << "[6] Asignatura" << endl;
+    cout << "[7] Salir y Guardar" << endl;
     cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
@@ -93,59 +227,20 @@ void quitar_espacio(string &cambio)
     }
 }
 
-
-bool buscar_profesor(string &usuario, string &contrasena)
+void fecha_hoy()
 {
-    ifstream lectura;
-    bool encontrado = false;
-    lectura.open("./Profesor.txt", ios::in);
+    time_t tiempo = time(NULL);
+    struct tm *Fecha;
+    Fecha = localtime(&tiempo);
 
-    while (lectura.good() && !lectura.eof() && !encontrado) {
-        lectura >> profesor.credenciales.usuario;
-        lectura >> profesor.credenciales.contrasena;
-        lectura >> profesor.datos_personales.primer_nombre;
-        lectura >> profesor.datos_personales.segundo_nombre;
-        lectura >> profesor.datos_personales.apellido_paterno;
-        lectura >> profesor.datos_personales.apellido_materno;
-        lectura >> profesor.departamento;
-        lectura >> profesor.curso;
-
-        if (usuario == profesor.credenciales.usuario && contrasena == profesor.credenciales.contrasena) {
-            encontrado = true;
-            agregar_espacio(profesor.departamento);
-            agregar_espacio(profesor.curso);
-        }
-    }
+    fecha.segundos =  Fecha->tm_sec;
+    fecha.minutos =  Fecha->tm_min;
+    fecha.horas =  Fecha->tm_hour;
+    fecha.dia =  Fecha->tm_mday;
+    fecha.mes =  Fecha->tm_mon + 1;
+    fecha.anio =  Fecha->tm_year + 1900;
     
-    lectura.close();
-    return encontrado;
-}
-
-bool buscar_estudiante(string &usuario, string &contrasena)
-{
-    ifstream lectura;
-    bool encontrado = false;
-    lectura.open("./Alumnos.txt", ios::in);
-
-    while (lectura.good() && !lectura.eof() && !encontrado) {
-        lectura >> estudiante.credenciales.usuario;
-        lectura >> estudiante.credenciales.contrasena;
-        lectura >> estudiante.datos_personales.primer_nombre;
-        lectura >> estudiante.datos_personales.segundo_nombre;
-        lectura >> estudiante.datos_personales.apellido_paterno;
-        lectura >> estudiante.datos_personales.apellido_materno;
-        lectura >> estudiante.carrera;
-        lectura >> estudiante.curso;
-
-        if (usuario == estudiante.credenciales.usuario && contrasena == estudiante.credenciales.contrasena) {
-            encontrado = true;
-            agregar_espacio(estudiante.carrera);
-            agregar_espacio(estudiante.curso);
-        }
-    }
-    
-    lectura.close();
-    return encontrado;
+    printf("%02d/%02d/%d %02d:%02d:%02d\n", fecha.dia, fecha.mes, fecha.anio, fecha.horas, fecha.minutos, fecha.segundos);
 }
 
 void iniciar_sesion_estudiante(bool &ingresado, int &intento)
@@ -177,8 +272,10 @@ void iniciar_sesion_profesor(bool &ingresado, int &intento)
 
     cout << "**********************************************" << endl;
     cout << "\t\tIniciar Sesión " << endl;
+
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
+
     cout << "\tContraseña: ";
     getline(cin, contrasena);
 
@@ -192,69 +289,152 @@ void iniciar_sesion_profesor(bool &ingresado, int &intento)
     }
 }
 
-int submenu2()
+bool buscar_profesor(string &usuario, string &contrasena)
 {
-    int opc;
+    bool encontrado = false;
+    ifstream Profesor(PATH_PROFESOR, ios::in);
 
-    cout << "*******************************************************" << endl;
-    cout << "\t\t Bienvenido al sistema \n" << endl;
-    cout << "Curso        : " << profesor.curso << endl;
-    cout << "Nombres      : " << profesor.datos_personales.primer_nombre << " " << profesor.datos_personales.segundo_nombre << endl;
-    cout << "Apellidos    : " << profesor.datos_personales.apellido_paterno << " " << profesor.datos_personales.apellido_materno << endl;
-    cout << "Departamento : " << profesor.departamento << endl;
+    while (Profesor.good() && !Profesor.eof() && !encontrado) {
+        Profesor >> profesor.credenciales.usuario;
+        Profesor >> profesor.credenciales.contrasena;
+        Profesor >> profesor.datos_personales.primer_nombre;
+        Profesor >> profesor.datos_personales.segundo_nombre;
+        Profesor >> profesor.datos_personales.apellido_paterno;
+        Profesor >> profesor.datos_personales.apellido_materno;
+        Profesor >> profesor.departamento;
+        Profesor >> profesor.curso;
 
-    cout << "\n[1] Tomar Asistencia" << endl;
-    cout << "[2] Ingresar Notas" << endl;
-    cout << "[3] Salir" << endl;
-    cout << "\n\tIngrese una opción -> ";
-    cin >> opc;
-
-    return opc;
+        if (usuario == profesor.credenciales.usuario && contrasena == profesor.credenciales.contrasena) {
+            encontrado = true;
+            agregar_espacio(profesor.departamento);
+            agregar_espacio(profesor.curso);
+        }
+    }
+    
+    Profesor.close();
+    return encontrado;
 }
 
-int submenu4()
+bool buscar_estudiante(string &usuario, string &contrasena)
 {
-    int opc;
-    cout << "****************************************************************************" << endl;
-    cout << "\t\tSeleccione el dato que desea actualizar" << endl;
-    cout << "[1] Usuario" << endl;
-    cout << "[2] Contraseña" << endl;
-    cout << "[3] Nombres" << endl;
-    cout << "[4] Apellidos" << endl;
-    cout << "[5] Carrera Profesional" << endl;
-    cout << "[6] Asignatura" << endl;
-    cout << "[7] Salir y Guardar" << endl;
-    cout << "\n\tIngrese una opción -> ";
-    cin >> opc;
+    bool encontrado = false;
+    ifstream Alumno(PATH_ALUMNO, ios::in);
 
-    return opc;
+    if (!Alumno.is_open()) {
+        cout << "\nNo se pudo abrir el archivo " << PATH_ALUMNO <<  " para lectura" << endl;
+        return -1;
+    }
+
+    while (Alumno.good() && !Alumno.eof() && !encontrado) {
+        Alumno >> estudiante.credenciales.usuario;
+        Alumno >> estudiante.credenciales.contrasena;
+        Alumno >> estudiante.datos_personales.primer_nombre;
+        Alumno >> estudiante.datos_personales.segundo_nombre;
+        Alumno >> estudiante.datos_personales.apellido_paterno;
+        Alumno >> estudiante.datos_personales.apellido_materno;
+        Alumno >> estudiante.carrera;
+        Alumno >> estudiante.curso;
+
+        if (usuario == estudiante.credenciales.usuario && contrasena == estudiante.credenciales.contrasena) {
+            encontrado = true;
+            agregar_espacio(estudiante.carrera);
+            agregar_espacio(estudiante.curso);
+        }
+    }
+    
+    Alumno.close();
+    return encontrado;
 }
 
-void fecha_hoy()
+void mostrar_asistencia()
 {
-    time_t tiempo = time(NULL);
-    struct tm *Fecha;
-    Fecha = localtime(&tiempo);
+    ifstream Asistencia;
+    string codigo;
+    char asistencia[16];
+    bool encontrado = false;
+    // float asistencias = 0;
+    float contador = 0;
+    float contador2 = 0;
+    float contador3 = 0;
+    Asistencia.open("./Asistencia.txt", ios::in);
+    
+    
+    cout << "\t\t\tMis Asistencias\t\t\t"; fecha_hoy(); cout << endl;
+    cout << "\n\t   Asignaturas \t\t\t A(Asistio) / T(Tardanza) / F(Falta) ";
+    cout << "\n****************************************************************************" << endl;
 
-    fecha.segundos =  Fecha->tm_sec;
-    fecha.minutos =  Fecha->tm_min;
-    fecha.horas =  Fecha->tm_hour;
-    fecha.dia =  Fecha->tm_mday;
-    fecha.mes =  Fecha->tm_mon + 1;
-    fecha.anio =  Fecha->tm_year + 1900;
+    while (!Asistencia.eof() && Asistencia.good() && !encontrado) {
+        Asistencia >> codigo;
+        Asistencia >> estudiante.datos_personales.primer_nombre;
+        Asistencia >> estudiante.datos_personales.segundo_nombre;
+        Asistencia >> estudiante.datos_personales.apellido_paterno;
+        Asistencia >> estudiante.datos_personales.apellido_materno;
 
-    cout << fecha.anio << "/" << fecha.mes << "/" << fecha.dia << "  " << fecha.horas << ":" << fecha.minutos;
+        for (int i = 0; i < 16; ++i) {
+            Asistencia >> asistencia[i];
+            if (asistencia[i] == 'A') {
+                contador++;
+            } else if (asistencia[i] == 'T') {
+                contador2++;
+            } else if (asistencia[i] == 'F') {
+                contador3++;
+            }
+        }    
+
+        if (codigo == estudiante.credenciales.usuario) {
+            encontrado = true;
+        }
+    }
+
+    cout << estudiante.curso << " : \t\t" << contador << "%\t" <<  contador2 << "%\t" << contador3 << "%\t" << endl;
+    // cout << contador << endl;
+    cout << "\n\n\nPresione enter para volver" << endl;
+
+    cin.ignore();
+    cin.get();
 }
 
-void notas()
+void mostrar_notas()
 {
-    fstream Notas;
+    string codigo;
+    bool encontrado = false;
+    float EP, EC, EF, PF;
+
+    ifstream Notas(PATH_NOTAS, ios::in);
+
+    cout << "\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
+    cout << "\n\t   Asignaturas \t\t\t\t Calificación";
+    cout << "\n****************************************************************************" << endl;
+
+    while (!Notas.eof() && Notas.good() && !encontrado) {
+        Notas >> codigo;
+        Notas >> estudiante.datos_personales.primer_nombre;    
+        Notas >> estudiante.datos_personales.segundo_nombre;   
+        Notas >> estudiante.datos_personales.apellido_paterno;   
+        Notas >> estudiante.datos_personales.apellido_materno; 
+        Notas >> EP >> EC >> EF >> PF;
+
+        if (codigo == estudiante.credenciales.usuario) {
+            encontrado = true;
+        }
+    }
+    cout << "\t\t\t\t\tExamen Parcial: " << EP << endl;
+    cout << estudiante.curso << "\t\tEvaluaciones Continuas e Informes: " << EC << endl;
+    cout << "\t\t\t\t\tExamen Final: " << EF << endl;
+    cout << "\n\t\t\t\t\tPromedio Final: " << PF << endl;
+
+    cin.ignore();
+    cin.get();
+}
+
+void registrar_notas()
+{
     string codigo;
     float EP;
     float EC;
     float EF;
     float PF = 0;
-    Notas.open("./Notas.txt", ios::in | ios::out);
+    fstream Notas(PATH_NOTAS, ios::in | ios::out);
 
     Notas >> codigo;
     Notas >> estudiante.datos_personales.primer_nombre;
@@ -262,7 +442,8 @@ void notas()
     Notas >> estudiante.datos_personales.apellido_paterno;
     Notas >> estudiante.datos_personales.apellido_materno;
 
-    while (Notas.good() && !Notas.eof()) {        
+    while (Notas.good() && !Notas.eof()) {
+        limpiar_ventana();
         cout << "\t\t Ingresos de Calificaciones \t"; fecha_hoy();
         cout << "\n****************************************************************" << endl;        
         cout << "Estudiante: " << codigo << endl;
@@ -295,7 +476,6 @@ void notas()
             cin.ignore();
             cin.get();
         }
-
     }
     
     cout << "\nIngreso de notas de completado" << endl;
@@ -304,15 +484,15 @@ void notas()
     cin.get();
 }
 
-void asistencia()
+void registrar_asistencia()
 {
-    fstream Asistencia;
     string name1;
     string name2;
     string apellido_paterno;
     string apellido_materno;
     char tmp;
-    Asistencia.open("./Asistencia.txt", ios::in | ios::out);
+
+    fstream Asistencia(PATH_ASISTENCIA, ios::in | ios::out);
     
     cout << "\t\t Asistencia \t\t\t"; fecha_hoy(); 
     cout << "\n****************************************************************" << endl;
@@ -344,115 +524,11 @@ void asistencia()
     cin.get();
 }
 
-int submenu1() 
-{
-    int opc;
-
-    cout << "************************************************************************" << endl;
-    cout << "\tEstudiante de la Universidad Nacional Mayor de San Marcos\n" << endl;
-    cout << "Curso     : " << estudiante.curso << endl;
-    cout << "Nombres   : " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
-    cout << "Apellidos : " << estudiante.datos_personales.apellido_paterno << " " << estudiante.datos_personales.apellido_materno << endl;
-    cout << "Carrera   : " << estudiante.carrera << endl;
-    // cout << "Pondero ciclo 24-I: "  << estudiante.ponderado <<endl;
-
-    cout << "\n[1] Asistencia" << endl;
-    cout << "[2] Notas" << endl;
-    cout << "[3] Salir " << endl;
-    cout << "\n\tIngrese una opción -> ";
-    cin >> opc;
-
-    return opc;
-}
-
-void mostrar_asistencia()
-{
-    ifstream Asistencia;
-    string codigo;
-    char asistencia;
-    bool encontrado = false;   
-    Asistencia.open("./Asistencia.txt", ios::in);
-    
-    
-    cout << "\t\t\tMis Asistencias\t\t\t"; fecha_hoy(); cout << endl;
-    cout << "\n\t   Asignaturas \t\t\t A(Asistio) / T(Tardanza) / F(Falta) ";
-    cout << "\n****************************************************************************" << endl;
-
-    while (!Asistencia.eof() && Asistencia.good() && !encontrado) {
-        Asistencia >> codigo;
-        Asistencia >> estudiante.datos_personales.primer_nombre;
-        Asistencia >> estudiante.datos_personales.segundo_nombre;
-        Asistencia >> estudiante.datos_personales.apellido_paterno;
-        Asistencia >> estudiante.datos_personales.apellido_materno;
-        Asistencia >> asistencia;
-
-        if (codigo == estudiante.credenciales.usuario) {
-            encontrado = true;
-        }
-    }
-
-    cout << estudiante.curso << " : \t\t\t" << asistencia << endl;
-    cout << "\n\n\nPresione enter para volver" << endl;
-
-    cin.ignore();
-    cin.get();
-}
-
-int submenu3()
-{
-    int opc;
-    cout << "************************************************************************" << endl;
-    cout << "\t\t\tBienvenido Super Usuario\n" << endl;
-    cout << "[1] Crear un nuevo alumno" << endl;
-    cout << "[2] Leer datos de un alumno" << endl;
-    cout << "[3] Actualizar datos de un alumno" << endl;
-    cout << "[4] Eliminar datos de un alumno" << endl;
-    cout << "[5] Salir" <<endl;
-    cout << "\n\tIngrese una opción -> ";
-    cin >> opc;
-
-    return opc;
-}
-
-
-void mostrar_notas()
-{
-    ifstream Notas;
-    string codigo;
-    bool encontrado = false;
-    float EP, EC, EF, PF;
-
-    Notas.open("./Notas.txt", ios::in);
-
-    cout << "\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
-    cout << "\n\t   Asignaturas \t\t\t\t Calificación";
-    cout << "\n****************************************************************************" << endl;
-
-    while (!Notas.eof() && Notas.good() && !encontrado) {
-        Notas >> codigo;
-        Notas >> estudiante.datos_personales.primer_nombre;    
-        Notas >> estudiante.datos_personales.segundo_nombre;   
-        Notas >> estudiante.datos_personales.apellido_paterno;   
-        Notas >> estudiante.datos_personales.apellido_materno; 
-        Notas >> EP >> EC >> EF >> PF;
-
-        if (codigo == estudiante.credenciales.usuario) {
-            encontrado = true;
-        }
-    }
-    cout << "\t\t\t\t\tExamen Parcial: " << EP << endl;
-    cout << estudiante.curso << "\t\tEvaluaciones Continuas e Informes: " << EC << endl;
-    cout << "\t\t\t\t\tExamen Final: " << EF << endl;
-    cout << "\n\t\t\t\t\tPromedio Final: " << PF << endl;
-
-    cin.ignore();
-    cin.get();
-}
-
 void crear_alumno()
 {
-    ofstream Alumno;
-    Alumno.open("./Alumnos.txt", ios::out | ios::app);
+    ofstream Alumno(PATH_ALUMNO, ios::out | ios::app);
+    ofstream Asistencia(PATH_ASISTENCIA, ios::out | ios::app);
+    ofstream Notas(PATH_NOTAS, ios::out | ios::app);
 
     cin.ignore();
     cout << "\n****************************************************************************" << endl;
@@ -489,10 +565,18 @@ void crear_alumno()
     Alumno << estudiante.carrera << "   ";
     Alumno << estudiante.curso;
 
+    Asistencia << "\n" << estudiante.credenciales.usuario << "   ";
+    Asistencia << estudiante.datos_personales.primer_nombre << "   ";
+    Asistencia << estudiante.datos_personales.apellido_paterno << "   ";
+
+    Notas << "\n" << estudiante.credenciales.usuario << "   ";
+    Notas << estudiante.datos_personales.primer_nombre << "   ";
+    Notas << estudiante.datos_personales.apellido_paterno << "   ";
+
     cout << "\n\nDatos del alumno registrados y almacenados." << endl;
     
     Alumno.close();
-    cin.ignore();
+
     cin.get();
 }
 
@@ -593,9 +677,9 @@ void actualizar_alumno()
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
-        if (codigo == estudiante.credenciales.usuario && 
-            nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre &&
-            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno) {
+        if (codigo == estudiante.credenciales.usuario &&
+            (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
+            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
 
             int opc;
@@ -729,8 +813,7 @@ void actualizar_alumno()
         Actualizar >> estudiante.datos_personales.apellido_paterno;
         Actualizar >> estudiante.datos_personales.apellido_materno;
         Actualizar >> estudiante.carrera;
-        Actualizar >> estudiante.curso;
-       
+        Actualizar >> estudiante.curso;       
     }
 
     if (!encontrado) {
@@ -739,8 +822,8 @@ void actualizar_alumno()
 
     Actualizar.close();
     Actualizar_Temporal.close();
-    // remove("./Alumnos.txt");
-    // rename("./Alumnos temporal.txt", "./Alumnos.txt");
+    remove("./Alumnos.txt");
+    rename("./Alumnos Temporal.txt", "./Alumnos.txt");
 
     cin.get();
 }
@@ -784,8 +867,8 @@ void eliminar_alumno()
         agregar_espacio(estudiante.curso);
 
         if (codigo == estudiante.credenciales.usuario && 
-            nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre &&
-            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno) {
+            (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
+            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
         } else {
             quitar_espacio(estudiante.carrera);
@@ -819,8 +902,8 @@ void eliminar_alumno()
 
     Alummno.close();
     Alummno_Temporal.close();
-    // remove("./Alumnos.txt");
-    // rename("./Alumnos Temporal.txt", "./Alumnos.txt");
+    remove("./Alumnos.txt");
+    rename("./Alumnos Temporal.txt", "./Alumnos.txt");
 
     cin.get();
 }

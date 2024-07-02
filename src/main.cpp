@@ -1,7 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <cstring>
-#include <locale.h>
+#include <clocale>
+#include <cstdlib>
+#include <cwchar>
 #include <iomanip>
 #include <ctime>
 
@@ -9,7 +11,7 @@
 
 using namespace std;
 
-int main()
+int main(void)
 {
     setlocale(LC_ALL, "");
 
@@ -74,12 +76,12 @@ int main()
                         switch (opc2) {
                             case 1: {
                                 limpiar_ventana();
-                                asistencia(); 
+                                registrar_asistencia(); 
                                 break;
                             }                            
                             case 2: {
                                 limpiar_ventana();
-                                notas();
+                                registrar_notas();
                                 break;
                             }
                             default: break;
