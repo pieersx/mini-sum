@@ -44,7 +44,7 @@ int main(void)
                             }                 
                             case 3: break;
                             default: {
-                                cout << "\n\tOpci" O "n no v" A "lida" << endl; 
+                                cout << "\n\tOpción no válida" << endl; 
                                 cout << "Presione enter para volver selecionar..."; 
 
                                 cin.ignore();
@@ -114,7 +114,7 @@ int main(void)
                         }
                         case 5: break;
                         default: {
-                            cout << "\n\tOpci" O "n no v" A "lida" << endl; 
+                            cout << "\n\tOpción no válida" << endl; 
                             cout << "Presione enter para volver selecionar..."; 
                             cin.ignore();
                             cin.get();
@@ -126,7 +126,7 @@ int main(void)
             case 4: break;
 
             default: {
-                cout << "\n\tOpci" O "n no v" A "lida" << endl; 
+                cout << "\n\tOpción no válida" << endl; 
                 cout << "Presione enter para volver selecionar..."; 
                 cin.ignore();
                 cin.get();

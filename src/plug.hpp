@@ -4,22 +4,10 @@
 #include <string.h>
 
 #ifndef _WIN32
-    #define A "\u00E1"
-    #define E "\u00E9"
-    #define I "\u00ED"
-    #define O "\u00F3"
-    #define U "\u00FA"
-    #define N "\u00F1"
 #else
 #include <wchar.h>
 #include <locale.h>
-    #define void setlocale(LC_ALL, "pt");
-    #define A "\xA0"
-    #define E "\x82"
-    #define I "\xA1"
-    #define O "\xA2"
-    #define U "\xA3"
-    #define N "\xA4"
+#include <windows.h>
 #endif // _WIN32
 
 using namespace std;

@@ -3,6 +3,7 @@
 #include <cstring>
 #include <ctime>
 #include <iomanip>
+#include <unistd.h>
 
 #include "plug.hpp"
 
@@ -56,6 +57,8 @@ void limpiar_ventana()
 #ifndef _WIN32
     system("clear");
 #else 
+    SetConsoleOutputCP(65001);
+    SetConsoleCP(65001);
     system("cls");
 #endif
 
@@ -66,51 +69,39 @@ using namespace std;
 void portada()
 {
     cout << R"(
-                                                          #####                                                                                                                                        
-                                                                #####                                                                                                                                  
-                                       ######                       ####                                                                                                                               
-                              ##################                       #####                                                                                                                           
-                          #####          ####                             #####                                                                                                                        
-                       ###               ##                                  ####                         ##     ###                                                                                   
-                    ###                 #                                      ####                   #########  ###             ##                                                                    
-                  ##                   ##       ##                               ####                 ###   ###                 ###                                                                    
-                ##                     ###################                        ####                #####     ####  ###############   #######  ##############   ########                             
-              ##                    ##########################                      ####               ########  ###  ####      ###    ###   ###  ###  ###  ####       ###                             
-             #                    ##############################                     ####                   ###  ###   #######  ###   ##########  ###  ###  ####  ########                             
-            #                  ###################################        #           ####           ###    ###  ###  ##   ###  ###    ####       ###  ###  #### ####  ###                             
-                              ###########################       ####       #           ####          #########  ##### #######   ######  ######## ##### #### ##### #########                            
-                          #####################                             #           ####                                                                                                           
-                       ### ################                          ##     ##           ###                                                                                                           
-                     ###  ##############                            ####     ##          ####                                                                                                          
-                   ###   ##############          ##############   ######     ##           ###                                                                                                          
-       #          ###    #############      ################ ############     ##          ####            ###                    ##                                                                    
-                 ###    ##############    ################################    ##           ###       ######  ######             ####                               ####                                
-      #         ###     #############    #################################    ##           ###        ####    ###                                                   ###                                
-      #         ###    ##############     ################################    ###          ####       ####    ####  #### ####  #####    #####    #####          #######    #####                       
-      #        ####    ###############          ###########################   ###          ####       ####    ####   #########  ####  #### ### #### ####      #########  #### ####                     
-      #        ####    ###################           ######################   ###          ####       ####    ####   ###  ####  #### ####      ###   ####     ###   ### ##########                     
-      #       #####    #########################         ##################  ####          ###         ###    ###    ###  ####  #### ####      ###   ###      ###   ### ####                           
-      ##      #####    ################################     ##############   ###          ####         #########     ###  ####  ####  ######## #########      #########  ########                      
-      ##      #####    ##################################    #############  ####          ####           #####      ##### #### ######   #####     ####          ### ####   #####                       
-       #       #####    ###################################   ############ #####         ####                                                                                                          
-       ##      ######   #################################     ###########  ####          ####                                                                                                          
-        ##      ######   ####### #####################       #################          ####                                                                                                           
-         #      #######   ####                              ##################         #####                                                                                                           
-         ###     #######   ##                             ###################         #####                                                          ##                       ###                      
-          ###     ########  #                          ####################          #####           ######     ######             ##              ###                        ####                     
-           ###     ######### ###                 #########################          #####              #####    #####              ##                                         ####                     
-             ##     ####################################################          #####                #####   ######   #######  ####### #### #### ####   ####### #### #####  ####  #######            
-              ###     #################################################          #####                 ###### #######   ##  ####  ####     ### ### #### ####  ###  ###  ####  ####  ##   ###           
-                ###     #############################################          #####                   ### ##### ####    #######  ####     ###     #### ####       ###  ####  ####   #######           
-                 ####     ########################################           ######                    ###  ###  ####  #### ####  ####     ###     #### ####       ###  ####  #### ####  ###           
-                   ####     ###################################           #######                    ######     ###### ##########  ##### #######  ###### ########  ########## ##### #########          
-                     #####     ############################             #######                                                                                                                        
-                        #####        ################               ########                                                                                                                           
-                           #######                             ##########                                                                                                                              
-                               ###########              #############                                                                                                                                  
-                                    ############################                                                                                                                                       
-                                              ########                                                                                                                                                 
-                                                                                                                                                                                                       
+                                             =**-                                                                                                    
+                                              -@@%                                                                                               
+                        .*@@@@@@@@@+              :@@#                                                                                           
+                   =@@@=      %@@                    .@@*                                                                                        
+                *%=          +@                         %@@                .*@@#- @@-                                                            
+             :#:             +                            %@@             *@@::@@  :         =@#                                                 
+           :+               =@@@@@@@@@@@@@:                 @@%           *@@@:   @@: #@@@@ @@@@@  @@@@@. @@@@@@@@@@  @@@@@*                     
+          -              =@@@@@@@@@@@@@@@@@@@+               +@@            :@@@@ %@: @@@    @@*  @@@@@@@ @@* @@  @@    .#@@                     
+                       @@@@@@@@@@@@@@@@@@@@@@@@@              -@@         @@   @@ %@:    #@@ @@#  @@@     @@* @@. @@  @@ +@@                     
+                     *@@@@@@@@@@@@@@@@*:.      .-      :       =@@        #@@@@#  @@@ @@@@@   @@@   @@@@ @@@@.@@@ @@@ %@@@@@#                    
+                 :%%@@@@@@@@@@@@-                 -    -:       *@@                                                                              
+               +@+ @@@@@@@@@@=                   :@@    #.       @@@                                                                             
+              @@  @@@@@@@@@@      +@@@@@@@@@@.+@@@@@@   #+       .@@         #@@-                                                                
+            .@@  +@@@@@@@@@=   @@@@@@@@@@@@@@@@@@@@@@%  :@        @@@     @@@@ =@@@=         #@@                       @@@                       
+    :       @@   @@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@   @        @@@     :@@    @%                                    %@@                       
+    -      @@@  .@@@@@@@@@@=    -@@@@@@@@@@@@@@@@@@@@@:  @@       @@@     :@@    @% %@@@@@@  @@@  @@@@@  @@@@@=    +@@@@@@  @@@@@                
+    =     :@@+  -@@@@@@@@@@@@@=       =%@@@@@@@@@@@@@@* =@@       @@@     :@@    @%  @@* @@-  @@ @@+    @@+ -@@    @@. @@@ @@@@@@*               
+    *.    =@@%  :@@@@@@@@@@@@@@@@@@@%+    +@@@@@@@@@@@- @@=       @@@      @@+  @@=  @@* @@-  @@ @@@    @@@ =@@    @@- @@@ @@+                   
+    =*    =@@@   @@@@@@@@@@@@@@@@@@@@@@@@+  =@@@@@@@@@ :@@       :@@*       +@@@*   @@@@-@@@ @@@  .@@@*  .@@@-      %@@-@@  -@@@*                
+     @    :@@@*  #@@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@@ @@@       @@@                                                                             
+     -@    @@@@-  @@@@@@@@@@@@@@@@@@@@@@-    @@@@@@@@ @@@:      #@@-                                                                             
+      @#    @@@@=  @@@   .-===--.           @@@@@@@@%@@@=      -@@@                                                                              
+       @%   -@@@@@  @                    .@@@@@@@@@@@@@+      -@@@        *%%=    +%%%                      @@                %@@:               
+        @@   .@@@@@@ :+            .+@@@@@@@@@@@@@@@@@       *@@%         .@@@:  -@@@          +@:         .:                  @@=               
+         #@.   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+       @@@+           @@@@  @@@@  @@@@@@ @@@@@ #@@@@@ @@@  @@@@@ @@@  @@  @@= @@@@@*        
+          .@@   -@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*       @@@@             @@=@@@@%@@    :*@@  @@:   @@-   :@@ @@:    *@@  @@  @@=   -%@@        
+            =@@   .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:       @@@@.              @@ #@@ #@@  @@*=@@  @@=   @@-   :@@ @@@    +@@  @@  @@= @@:*@@        
+              =@@+   +@@@@@@@@@@@@@@@@@@@@@@%.       =@@@@                @@@@   .@@@@ =@@*@@@ :@@@ @@@@*  @@@  +@@@%  @@@*@@@ @@@ %@@@@@*       
+                .@@@#.   -#@@@@@@@@@@@@%-         *@@@@#                                                                                         
+                    *@@@@+                   +@@@@@@=                                                                                            
+                        =@@@@@@@@@@@@@@@@@@@@@@%:                                                                                                
+                                :=+**+=-.                                                                                                        
+                                                                                                                                                 
     )";
 }
 
@@ -118,14 +109,16 @@ int menu()
 {
     int opc;
     
-    portada();
+    portada(); 
+    sleep(3);
+    
     cout << "*******************************************************" << endl;
     cout << "\t\t Bienvenidos al SUM" << endl;
     cout << "\n[1] Estudiante" << endl;
     cout << "[2] Profesor" << endl;
     cout << "[3] Registrar" << endl;
     cout << "[4] Salir" << endl;
-    cout << "\n\tIngrese una opci" O "n -> ";
+    cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
     return opc;
@@ -146,7 +139,7 @@ int submenu1()
     cout << "\n[1] Asistencia" << endl;
     cout << "[2] Notas" << endl;
     cout << "[3] Salir " << endl;
-    cout << "\n\tIngrese una opci" O "n -> ";
+    cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
     return opc;
@@ -166,7 +159,7 @@ int submenu2()
     cout << "\n[1] Tomar Asistencia" << endl;
     cout << "[2] Ingresar Notas" << endl;
     cout << "[3] Salir" << endl;
-    cout << "\n\tIngrese una opci" O "n -> ";
+    cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
     return opc;
@@ -182,7 +175,7 @@ int submenu3()
     cout << "[3] Actualizar datos de un alumno" << endl;
     cout << "[4] Eliminar datos de un alumno" << endl;
     cout << "[5] Salir" <<endl;
-    cout << "\n\tIngrese una opci" O "n -> ";
+    cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
     return opc;
@@ -194,13 +187,13 @@ int submenu4()
     cout << "****************************************************************************" << endl;
     cout << "\t\tSeleccione el dato que desea actualizar" << endl;
     cout << "[1] Usuario" << endl;
-    cout << "[2] Contrase" N "a" << endl;
+    cout << "[2] Contraseña" << endl;
     cout << "[3] Nombres" << endl;
     cout << "[4] Apellidos" << endl;
     cout << "[5] Carrera Profesional" << endl;
     cout << "[6] Asignatura" << endl;
     cout << "[7] Salir y Guardar" << endl;
-    cout << "\n\tIngrese una opci" O "n -> ";
+    cout << "\n\tIngrese una opción -> ";
     cin >> opc;
 
     return opc;
@@ -250,10 +243,10 @@ void iniciar_sesion_estudiante(bool &ingresado, int &intento)
     string contrasena;
 
     cout << "**********************************************" << endl;
-    cout << "\t\tIniciar Sesi" O "n " << endl;
+    cout << "\t\tIniciar Sesión " << endl;
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
-    cout << "\tContrase" N "a: ";
+    cout << "\tContraseña: ";
     getline(cin, contrasena);
 
     if (buscar_estudiante(usuario, contrasena)) {
@@ -272,12 +265,12 @@ void iniciar_sesion_profesor(bool &ingresado, int &intento)
     string contrasena;
 
     cout << "**********************************************" << endl;
-    cout << "\t\tIniciar Sesi" O "n " << endl;
+    cout << "\t\tIniciar Sesión " << endl;
 
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
 
-    cout << "\tContrase" N "a: ";
+    cout << "\tContraseña: ";
     getline(cin, contrasena);
 
     if (buscar_profesor(usuario, contrasena)) {
@@ -403,7 +396,7 @@ void mostrar_notas()
     ifstream Notas(PATH_NOTAS, ios::in);
 
     cout << "\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
-    cout << "\n\t   Asignaturas \t\t\t\t Calificaci" O "n";
+    cout << "\n\t   Asignaturas \t\t\t\t Calificación";
     cout << "\n****************************************************************************" << endl;
 
     while (!Notas.eof() && Notas.good() && !encontrado) {
@@ -450,9 +443,9 @@ void registrar_notas()
         cout << "Asignatura: " << profesor.curso << endl;
         cout << "\nCalificación de Examen Parcial: ";
         cin >> EP;
-        cout << "Calificaci" O "n de Evaluaciones Continuas e Informes: ";
+        cout << "Calificación de Evaluaciones Continuas e Informes: ";
         cin >> EC;
-        cout << "Calificaci" O "n de Examen Final: ";
+        cout << "Calificación de Examen Final: ";
         cin >> EF;
 
         if ((EP >= 0 && EP <= 20) && (EC >= 0 && EC <= 20) && (EF >= 0 && EF <= 20)) {
@@ -496,7 +489,7 @@ void registrar_asistencia()
     
     cout << "\t\t Asistencia \t\t\t"; fecha_hoy(); 
     cout << "****************************************************************" << endl;
-    cout << " C" O "digo \t     Apellidos y Nombres       \t        A|T|F" << endl;  
+    cout << " Código \t     Apellidos y Nombres       \t        A|T|F" << endl;  
 
     Asistencia >> estudiante.codigo;
     Asistencia >> estudiante.datos_personales.primer_nombre;
@@ -536,7 +529,7 @@ void crear_alumno()
     cout << "\n\tIngrese un Usuario: ";
     getline(cin, estudiante.credenciales.usuario);
 
-    cout << "\tIngrese una Contrase" N "a: ";
+    cout << "\tIngrese una Contraseña: ";
     getline(cin, estudiante.credenciales.contrasena);
 
     cout << "\n\tNombres: ";
@@ -593,7 +586,7 @@ void leer_alumno()
     cout << "\n****************************************************************************" << endl;    
     cout << "\t\tIngrese los datos para leer al estudiante" << endl;    
 
-    cout << "\nIngrese C" O "digo del estudiante   : ";
+    cout << "\nIngrese Código del estudiante   : ";
     getline(cin, codigo);
     
     cout << "Ingrese Nombres del estudiante  : ";
@@ -654,7 +647,7 @@ void actualizar_alumno()
     cout << "\n****************************************************************************" << endl;    
     cout << "\t\tIngrese los datos para actualizar al estudiante" << endl;    
 
-    cout << "\nIngrese C" O "digo del estudiante   : ";
+    cout << "\nIngrese Código del estudiante   : ";
     getline(cin, codigo);
     
     cout << "Ingrese Nombres del estudiante  : ";
@@ -708,7 +701,7 @@ void actualizar_alumno()
                         limpiar_ventana();
 
                         cout << "\nContraseña actual          : " << estudiante.credenciales.contrasena << endl;
-                        cout << "Ingrese la nueva contrase" N "a: ";
+                        cout << "Ingrese la nueva contraseña: ";
                         getline(cin, estudiante.credenciales.contrasena);
 
                         cout << "\nDatos del estudiante actualizados y almacenados." << endl;
@@ -771,7 +764,7 @@ void actualizar_alumno()
                     case 7: break;
 
                     default: {
-                        cout << "\n\t   Opción no v" A "lida" << endl; 
+                        cout << "\n\t   Opción no válida" << endl; 
                         cout << "Presione enter para volver selecionar..."; 
                         cin.ignore();
                         cin.get();
@@ -816,7 +809,7 @@ void actualizar_alumno()
     }
 
     if (!encontrado) {
-        cout << "\nNo se encontr" O " ning" U "n estudiante con esos datos" << endl;
+        cout << "\nNo se encontró ningún estudiante con esos datos" << endl;
     }
 
     Actualizar.close();
@@ -841,7 +834,7 @@ void eliminar_alumno()
     cout << "\n****************************************************************************" << endl;    
     cout << "\t\tIngrese los datos para eliminar al estudiante" << endl;    
 
-    cout << "\nIngrese C" O "digo del estudiante   : ";
+    cout << "\nIngrese Código del estudiante   : ";
     getline(cin, codigo);
     
     cout << "Ingrese Nombres del estudiante  : ";
@@ -894,7 +887,7 @@ void eliminar_alumno()
     if (encontrado) {
         cout << "\nEstudiante eliminado del sistema" << endl;
     } else {
-        cout << "\nNo se encontr" O " ning" U "n estudiante con esos datos" << endl;
+        cout << "\nNo se encontró ningún estudiante con esos datos" << endl;
     }
 
     Alummno.close();
