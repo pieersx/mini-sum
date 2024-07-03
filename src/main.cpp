@@ -1,9 +1,8 @@
 #include <iostream>
-#include <fstream>
 #include <cstring>
-// #include <cstdlib>
 #include <iomanip>
 #include <ctime>
+#include <unistd.h>
 
 #include "plug.hpp"
 
@@ -11,7 +10,9 @@ using namespace std;
 
 int main(void)
 {
-    int opc;    
+    int opc;
+    portada();
+    sleep(2);
     do {        
         limpiar_ventana();
         opc = menu();

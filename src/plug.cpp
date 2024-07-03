@@ -7,11 +7,11 @@
 
 #include "plug.hpp"
 
-#define PATH_ALUMNO "./Alumnos.txt"
+#define PATH_ALUMNO          "./Alumnos.txt"
 #define PATH_ALUMNO_TEMPORAL "./Alumnos Temporal.txt"
-#define PATH_PROFESOR "./Profesor.txt"
-#define PATH_ASISTENCIA "./Asistencia.txt"
-#define PATH_NOTAS "./Notas.txt"
+#define PATH_PROFESOR        "./Profesor.txt"
+#define PATH_ASISTENCIA      "./Asistencia.txt"
+#define PATH_NOTAS           "./Notas.txt"
 
 struct Fecha {
     int dia;
@@ -28,8 +28,7 @@ struct Usuario {
 };
 
 struct Persona {
-    string primer_nombre;
-    string segundo_nombre;
+    string nombres;
     string apellido_paterno;
     string apellido_materno;
 };
@@ -109,11 +108,8 @@ int menu()
 {
     int opc;
     
-    portada(); 
-    sleep(3);
-    
-    cout << "*******************************************************" << endl;
-    cout << "\t\t Bienvenidos al SUM" << endl;
+    cout << "\n*******************************************************" << endl;
+    cout << "\t\t Bienvenidos al Mini-SUM" << endl;
     cout << "\n[1] Estudiante" << endl;
     cout << "[2] Profesor" << endl;
     cout << "[3] Registrar" << endl;
@@ -128,7 +124,7 @@ int submenu1()
 {
     int opc;
 
-    cout << "************************************************************************" << endl;
+    cout << "\n************************************************************************" << endl;
     cout << "\tEstudiante de la Universidad Nacional Mayor de San Marcos\n" << endl;
     cout << "Curso     : " << estudiante.curso << endl;
     cout << "Nombres   : " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
@@ -149,7 +145,7 @@ int submenu2()
 {
     int opc;
 
-    cout << "************************************************************************" << endl;
+    cout << "\n************************************************************************" << endl;
     cout << "\tProfesor de la Universidad Nacional Mayor de San Marcos \n" << endl;
     cout << "Curso        : " << profesor.curso << endl;
     cout << "Nombres      : " << profesor.datos_personales.primer_nombre << " " << profesor.datos_personales.segundo_nombre << endl;
@@ -168,7 +164,7 @@ int submenu2()
 int submenu3()
 {
     int opc;
-    cout << "************************************************************************" << endl;
+    cout << "\n************************************************************************" << endl;
     cout << "\t\t\tBienvenido Super Usuario\n" << endl;
     cout << "[1] Crear un nuevo alumno" << endl;
     cout << "[2] Leer datos de un alumno" << endl;
@@ -184,7 +180,7 @@ int submenu3()
 int submenu4()
 {
     int opc;
-    cout << "****************************************************************************" << endl;
+    cout << "\n****************************************************************************" << endl;
     cout << "\t\tSeleccione el dato que desea actualizar" << endl;
     cout << "[1] Usuario" << endl;
     cout << "[2] Contraseña" << endl;
@@ -242,7 +238,7 @@ void iniciar_sesion_estudiante(bool &ingresado, int &intento)
     string usuario;
     string contrasena;
 
-    cout << "**********************************************" << endl;
+    cout << "\n**********************************************" << endl;
     cout << "\t\tIniciar Sesión " << endl;
     cout << "\n\tUsuario: ";
     getline(cin, usuario);
@@ -264,7 +260,7 @@ void iniciar_sesion_profesor(bool &ingresado, int &intento)
     string usuario;
     string contrasena;
 
-    cout << "**********************************************" << endl;
+    cout << "\n**********************************************" << endl;
     cout << "\t\tIniciar Sesión " << endl;
 
     cout << "\n\tUsuario: ";
@@ -352,7 +348,7 @@ void mostrar_asistencia()
 
     ifstream Asistencia(PATH_ASISTENCIA, ios::in);    
     
-    cout << "\t\t\tMis Asistencias\t\t\t"; fecha_hoy();
+    cout << "\n\t\t\tMis Asistencias\t\t\t"; fecha_hoy();
     cout << "\n\t   Asignaturas \t\t\t A(Asistio) / T(Tardanza) / F(Falta) ";
     cout << "\n****************************************************************************" << endl;
 
@@ -395,7 +391,7 @@ void mostrar_notas()
 
     ifstream Notas(PATH_NOTAS, ios::in);
 
-    cout << "\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
+    cout << "\n\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
     cout << "\n\t   Asignaturas \t\t\t\t Calificación";
     cout << "\n****************************************************************************" << endl;
 
@@ -415,6 +411,8 @@ void mostrar_notas()
     cout << estudiante.curso << "\t\tEvaluaciones Continuas e Informes: " << EC << endl;
     cout << "\t\t\t\t\tExamen Final: " << EF << endl;
     cout << "\n\t\t\t\t\tPromedio Final: " << PF << endl;
+
+    cout << "\n\n\nPresione enter para volver" << endl;
 
     cin.ignore();
     cin.get();
@@ -437,7 +435,7 @@ void registrar_notas()
 
     while (Notas.good() && !Notas.eof()) {
         limpiar_ventana();
-        cout << "\t\t Ingresos de Calificaciones \t"; fecha_hoy();
+        cout << "\n\t\t Ingresos de Calificaciones \t"; fecha_hoy();
         cout << "\n****************************************************************" << endl;        
         cout << "Estudiante: " << codigo << endl;
         cout << "Asignatura: " << profesor.curso << endl;
@@ -487,7 +485,7 @@ void registrar_asistencia()
 
     fstream Asistencia(PATH_ASISTENCIA, ios::in | ios::out);
     
-    cout << "\t\t Asistencia \t\t\t"; fecha_hoy(); 
+    cout << "\n\t\t Asistencia \t\t\t"; fecha_hoy(); 
     cout << "****************************************************************" << endl;
     cout << " Código \t     Apellidos y Nombres       \t        A|T|F" << endl;  
 
@@ -608,9 +606,9 @@ void leer_alumno()
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
-        if (codigo == estudiante.credenciales.usuario && 
-            nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre &&
-            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno) {
+        if (codigo == estudiante.credenciales.usuario ||
+            (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
+            apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
         }
     }
@@ -669,7 +667,7 @@ void actualizar_alumno()
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
-        if (codigo == estudiante.credenciales.usuario &&
+        if (codigo == estudiante.credenciales.usuario ||
             (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
