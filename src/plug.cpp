@@ -522,7 +522,7 @@ void registrar_asistencia()
              << setw(20) << estudiante.datos_personales.nombres << "\t\t  ";
         cin >> tmp;
         
-        Asistencia << " " << tmp << endl;
+        Asistencia << " " << tmp;
         // Asistencia >> tmp;
         Asistencia >> estudiante.codigo;
         Asistencia >> estudiante.datos_personales.nombres;

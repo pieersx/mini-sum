@@ -1,8 +1,8 @@
-23200040   Pieers_Fernando     Pachas Auris  A
-23200024   Valeria_Alexandra   Flores Cortez  A
-23200062   Keyla_Noemi         Sihuacollo Sierra  F
-23200061   Yajhaira_Dayana     Santos Siguenza  F
-23200153   Emily_Andrea        Cerna Aguilar  T
-23200018   Bruce_Javier        Cordova Sandoval  T
-23200073   Jean_Piero          Villegas López  A
-23200054   Francis_Anthony     Rodriguez Jara  A
+23200040   Pieers_Fernando     Pachas Auris A 
+23200024   Valeria_Alexandra   Flores Cortez A 
+23200062   Keyla_Noemi         Sihuacollo Sierra F 
+23200061   Yajhaira_Dayana     Santos Siguenza F 
+23200153   Emily_Andrea        Cerna Aguilar T 
+23200018   Bruce_Javier        Cordova Sandoval T 
+23200073   Jean_Piero          Villegas López A 
+23200054   Francis_Anthony     Rodriguez Jara A 
