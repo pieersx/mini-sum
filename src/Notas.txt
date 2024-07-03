@@ -1,6 +1,8 @@
-23200040   Pieers Fernando     Pachas Auris 14 16 17 17     
-23200024   Valeria Alexandra   Flores Cortez 15 17 18 18    
-23200062   Keyla Noemi         Sihuacollo Sierra 16 17 12 12
-23200061   Yajhaira Dayana     Santos Siguenza 16 16 16 16  
-23200153   Emily Andrea        Cerna Aguilar 15 16 17 17    
-23200018   Bruce Javier        Cordova Sandoval             
+23200040    Pieers_Fernando      Pachas Auris 00 00 00 00  
+23200024    Valeria_Alexandra    Flores Cortez 00 00 00 00  
+23200062    Keyla_Noemi          Sihuacollo Sierra 00 00 00 00  
+23200061    Yajhaira_Dayana      Santos Siguenza 00 00 00 00  
+23200153    Emily_Andrea         Cerna Aguilar 00 00 00 00  
+23200018    Bruce_Javier         Cordova Sandoval 00 00 00 00  
+23200073    Jean_Piero           Villegas López 00 00 00 00  
+23200054    Francis_Anthony      Rodriguez Jara 00 00 00 00  

@@ -41,9 +41,6 @@ int submenu4();
 // Declaración de la función para limpiar la ventana de la consola para windows y sistemas POSIX
 void limpiar_ventana();
 
-// Caracteres especiales para el español
-void caracteres_especiales();
-
 // Portada del SUM
 void portada();
 

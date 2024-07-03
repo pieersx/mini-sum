@@ -1,7 +1,4 @@
 #include <iostream>
-#include <cstring>
-#include <iomanip>
-#include <ctime>
 #include <unistd.h>
 
 #include "plug.hpp"
@@ -11,9 +8,12 @@ using namespace std;
 int main(void)
 {
     int opc;
+    
     portada();
     sleep(2);
-    do {        
+
+    do {
+
         limpiar_ventana();
         opc = menu();
 
@@ -37,7 +37,7 @@ int main(void)
                                 limpiar_ventana();
                                 mostrar_asistencia();
                                 break;
-                            }                             
+                            }
                             case 2: {
                                 limpiar_ventana();
                                 mostrar_notas();
@@ -60,6 +60,7 @@ int main(void)
                 int intento = 3;
                 bool ingresado = false;
                 cin.ignore();
+
                 do {
                     limpiar_ventana();
                     iniciar_sesion_profesor(ingresado, intento);
@@ -75,7 +76,7 @@ int main(void)
                                 limpiar_ventana();
                                 registrar_asistencia(); 
                                 break;
-                            }                            
+                            }
                             case 2: {
                                 limpiar_ventana();
                                 registrar_notas();

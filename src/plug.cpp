@@ -3,7 +3,6 @@
 #include <cstring>
 #include <ctime>
 #include <iomanip>
-#include <unistd.h>
 
 #include "plug.hpp"
 
@@ -68,39 +67,41 @@ using namespace std;
 void portada()
 {
     cout << R"(
-                                             =**-                                                                                                    
-                                              -@@%                                                                                               
-                        .*@@@@@@@@@+              :@@#                                                                                           
-                   =@@@=      %@@                    .@@*                                                                                        
-                *%=          +@                         %@@                .*@@#- @@-                                                            
-             :#:             +                            %@@             *@@::@@  :         =@#                                                 
-           :+               =@@@@@@@@@@@@@:                 @@%           *@@@:   @@: #@@@@ @@@@@  @@@@@. @@@@@@@@@@  @@@@@*                     
-          -              =@@@@@@@@@@@@@@@@@@@+               +@@            :@@@@ %@: @@@    @@*  @@@@@@@ @@* @@  @@    .#@@                     
-                       @@@@@@@@@@@@@@@@@@@@@@@@@              -@@         @@   @@ %@:    #@@ @@#  @@@     @@* @@. @@  @@ +@@                     
-                     *@@@@@@@@@@@@@@@@*:.      .-      :       =@@        #@@@@#  @@@ @@@@@   @@@   @@@@ @@@@.@@@ @@@ %@@@@@#                    
-                 :%%@@@@@@@@@@@@-                 -    -:       *@@                                                                              
-               +@+ @@@@@@@@@@=                   :@@    #.       @@@                                                                             
-              @@  @@@@@@@@@@      +@@@@@@@@@@.+@@@@@@   #+       .@@         #@@-                                                                
-            .@@  +@@@@@@@@@=   @@@@@@@@@@@@@@@@@@@@@@%  :@        @@@     @@@@ =@@@=         #@@                       @@@                       
-    :       @@   @@@@@@@@@@   @@@@@@@@@@@@@@@@@@@@@@@@   @        @@@     :@@    @%                                    %@@                       
-    -      @@@  .@@@@@@@@@@=    -@@@@@@@@@@@@@@@@@@@@@:  @@       @@@     :@@    @% %@@@@@@  @@@  @@@@@  @@@@@=    +@@@@@@  @@@@@                
-    =     :@@+  -@@@@@@@@@@@@@=       =%@@@@@@@@@@@@@@* =@@       @@@     :@@    @%  @@* @@-  @@ @@+    @@+ -@@    @@. @@@ @@@@@@*               
-    *.    =@@%  :@@@@@@@@@@@@@@@@@@@%+    +@@@@@@@@@@@- @@=       @@@      @@+  @@=  @@* @@-  @@ @@@    @@@ =@@    @@- @@@ @@+                   
-    =*    =@@@   @@@@@@@@@@@@@@@@@@@@@@@@+  =@@@@@@@@@ :@@       :@@*       +@@@*   @@@@-@@@ @@@  .@@@*  .@@@-      %@@-@@  -@@@*                
-     @    :@@@*  #@@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@@@@ @@@       @@@                                                                             
-     -@    @@@@-  @@@@@@@@@@@@@@@@@@@@@@-    @@@@@@@@ @@@:      #@@-                                                                             
-      @#    @@@@=  @@@   .-===--.           @@@@@@@@%@@@=      -@@@                                                                              
-       @%   -@@@@@  @                    .@@@@@@@@@@@@@+      -@@@        *%%=    +%%%                      @@                %@@:               
-        @@   .@@@@@@ :+            .+@@@@@@@@@@@@@@@@@       *@@%         .@@@:  -@@@          +@:         .:                  @@=               
-         #@.   @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@+       @@@+           @@@@  @@@@  @@@@@@ @@@@@ #@@@@@ @@@  @@@@@ @@@  @@  @@= @@@@@*        
-          .@@   -@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*       @@@@             @@=@@@@%@@    :*@@  @@:   @@-   :@@ @@:    *@@  @@  @@=   -%@@        
-            =@@   .@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:       @@@@.              @@ #@@ #@@  @@*=@@  @@=   @@-   :@@ @@@    +@@  @@  @@= @@:*@@        
-              =@@+   +@@@@@@@@@@@@@@@@@@@@@@%.       =@@@@                @@@@   .@@@@ =@@*@@@ :@@@ @@@@*  @@@  +@@@%  @@@*@@@ @@@ %@@@@@*       
-                .@@@#.   -#@@@@@@@@@@@@%-         *@@@@#                                                                                         
-                    *@@@@+                   +@@@@@@=                                                                                            
-                        =@@@@@@@@@@@@@@@@@@@@@@%:                                                                                                
-                                :=+**+=-.                                                                                                        
-                                                                                                                                                 
+                                                                                                                                                                                                     
+                                                                            ████       ███   ███               ███         █████   ████                                                              
+                                █████  █████ ██████                          ████     ████                               ███  ███                  ███                                               
+                             ██ ██ ██   ███  ██████████                      █████   █████  ████  █████████   ████       ███       ████   ██████ ███████   ██████  ██████████████     ███████        
+                         ██ █ ██     ███  ███   ███████                      ██████ ██████   ███   ███   ███   ███       ███████    ███  ███  ██   ███    ███  ███  ███  ███   ███  ███   ███        
+                       ██ █  █  █  ███ ████████  ██ ██ █  ███                ███ █████ ███   ███   ███   ███   ███           ████   ███  ██████    ███   ████████   ███  ███   ███  ███   ███        
+                     █ █ ██ █  █████  ███████  ██ ██    ████                 ███ ████  ███   ███   ███   ███   ███       ██    ███  ███      ████  ███    ███       ███  ███   ███  ███   ███        
+                    █ █ ████████ █  ██  ███ ██  █████████████ ██            █████ ██  █████ █████ █████ █████ █████      ████████  █████ ███████   █████  ████████ ████████████████  █████████       
+                   █ ██ █  █  █ █████  █  ██  ██ █  █ ██  █ █████                                                                                                                                    
+                  ██ ████ ██ ███████ ██ ██  █  ████ █     █ ██   █                                                                                                                                   
+                █ ████  █ ███████   ██ ██ █  █ █ ██████████  █ ██ ██                                                                                                                                 
+                ███  ██ █  █  █ █ ███  █ █ █ ███  █ ████     ███ ██              ███                                                                                                                 
+               ██ ██  █ ██ ██ █ █████ ███ █ ████ █  █ █  █████ ███ ██           ██                     █                                ███                                                          
+              █ ██ ████  ███████████  ███████  ███ █ ██ ██ █  ██ ██ █       █████  █████             ████                               ████                                                         
+             █ █ ████ ███  █ ████ █████████████ █ █ █████  ████ ██ █ █       ███    ███        █               ██       ██             █████      ██                                                 
+             ███ █  ██  ██  █ ██ ███████    █████  ████  ██  ████ █ ██       ███    ███  █████████   ████   ███████  ████████       ████████   ███████                                               
+              ███ ██  ██  ██  ██ █████       ██ ██ ██  ██  ███ ██ ████       ███    ███   ███   ███   ███  ███      ███   ███      ███   ███  ███  ███                                               
+             █ █ █  ██  ██  ██ ████████      ███████████ ██  ██  █ ██        ███    ███   ███   ███   ███  ███      ███   ███      ███   ███  ███████                                                
+             █ █ ███  ██  ████  ███ ████   ██████    ██ █  ██  ██ █ ██       ███    ███   ███   ███   ███  ███      ███   ███      ███   ███  ███                                                    
+              █ ██ ████  ██ █  █ █ █ ██████████ █ █ █ █████  ██ █████         ███████    ███████████ █████  ███████   ██████        █████████  ███████                                               
+              ███ █  ████  █  █ █   ██ ████ ████        █ ██  ███ ███                                                                                                                                
+               ████ ██ █  ██ ████   ██ █ █ █ ███ █ █  █ █  ████ ██ ██                                                                                                                                
+               ██ █ █  ████ ██ ████ ███ █ ██ ███ █ ███████  █ ██ ███                                                                                                                                 
+                ███ ████  █    █ ██ █ ██ ██ █   █████ █ █████  ████                                                                                                                                  
+                 ██ ██ █  █ ██ █  ████ ██  █  ████ █  █  █  ███ ██                                                        ███                      ████                                              
+                   ███ ███████████ █ ██  ██ ███    ███████ █  ███           █████     █████               █              ██                         ███                                              
+                    █████ ██ ██ █████  ██  ██  █████ ██ ████ ██              █████   █████     ██████   ██████ ███ ████ ████     █████  ███  ████   ███     ██████                                   
+                      ██ █ ██ ██ █  ███  ██  ███ █   █    ███                █████  ██████   ███  ███   ████    ███████  ███   ███  ██  ███   ███   ███   ███   ██                                   
+                        █ █ █████ ██  ███  ███  █  ████  █ █                 █████████ ███  ███   ███    ███    ███      ███  ███       ███   ███   ███   ██    ██                                   
+                          ████████████   ██   ██████████                     ███ █████ ███  ███   ███    ███    ███      ███  ███       ███   ███   ███  ███    ██                                   
+                              ████ ███ █████  ████████                      ████  ███  ███   ███  ███    ███ █  ███      ███   ███  ██  ████ ████   ███   ███  ████                                  
+                                     ██████████                             ████       ████   ████ ███    ████  ████     ███     ████     ████ ███  ████    ███  ██                                  
+                                                                                                                                                                                                     
+                                                                                                                                                                                                     
+                                                                                                                                                                                                     
     )";
 }
 
@@ -127,7 +128,7 @@ int submenu1()
     cout << "\n************************************************************************" << endl;
     cout << "\tEstudiante de la Universidad Nacional Mayor de San Marcos\n" << endl;
     cout << "Curso     : " << estudiante.curso << endl;
-    cout << "Nombres   : " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
+    cout << "Nombres   : " << estudiante.datos_personales.nombres << endl;
     cout << "Apellidos : " << estudiante.datos_personales.apellido_paterno << " " << estudiante.datos_personales.apellido_materno << endl;
     cout << "Carrera   : " << estudiante.carrera << endl;
     // cout << "Pondero ciclo 24-I: "  << estudiante.ponderado <<endl;
@@ -148,7 +149,7 @@ int submenu2()
     cout << "\n************************************************************************" << endl;
     cout << "\tProfesor de la Universidad Nacional Mayor de San Marcos \n" << endl;
     cout << "Curso        : " << profesor.curso << endl;
-    cout << "Nombres      : " << profesor.datos_personales.primer_nombre << " " << profesor.datos_personales.segundo_nombre << endl;
+    cout << "Nombres      : " << profesor.datos_personales.nombres << endl;
     cout << "Apellidos    : " << profesor.datos_personales.apellido_paterno << " " << profesor.datos_personales.apellido_materno << endl;
     cout << "Departamento : " << profesor.departamento << endl;
 
@@ -287,8 +288,7 @@ bool buscar_profesor(string &usuario, string &contrasena)
     while (Profesor.good() && !Profesor.eof() && !encontrado) {
         Profesor >> profesor.credenciales.usuario;
         Profesor >> profesor.credenciales.contrasena;
-        Profesor >> profesor.datos_personales.primer_nombre;
-        Profesor >> profesor.datos_personales.segundo_nombre;
+        Profesor >> profesor.datos_personales.nombres;
         Profesor >> profesor.datos_personales.apellido_paterno;
         Profesor >> profesor.datos_personales.apellido_materno;
         Profesor >> profesor.departamento;
@@ -296,6 +296,7 @@ bool buscar_profesor(string &usuario, string &contrasena)
 
         if (usuario == profesor.credenciales.usuario && contrasena == profesor.credenciales.contrasena) {
             encontrado = true;
+            agregar_espacio(profesor.datos_personales.nombres);
             agregar_espacio(profesor.departamento);
             agregar_espacio(profesor.curso);
         }
@@ -318,8 +319,7 @@ bool buscar_estudiante(string &usuario, string &contrasena)
     while (Alumno.good() && !Alumno.eof() && !encontrado) {
         Alumno >> estudiante.credenciales.usuario;
         Alumno >> estudiante.credenciales.contrasena;
-        Alumno >> estudiante.datos_personales.primer_nombre;
-        Alumno >> estudiante.datos_personales.segundo_nombre;
+        Alumno >> estudiante.datos_personales.nombres;
         Alumno >> estudiante.datos_personales.apellido_paterno;
         Alumno >> estudiante.datos_personales.apellido_materno;
         Alumno >> estudiante.carrera;
@@ -327,10 +327,11 @@ bool buscar_estudiante(string &usuario, string &contrasena)
 
         if (usuario == estudiante.credenciales.usuario && contrasena == estudiante.credenciales.contrasena) {
             encontrado = true;
-            agregar_espacio(estudiante.carrera);
-            agregar_espacio(estudiante.curso);
         }
     }
+    agregar_espacio(estudiante.datos_personales.nombres);
+    agregar_espacio(estudiante.carrera);
+    agregar_espacio(estudiante.curso);
     
     Alumno.close();
     return encontrado;
@@ -351,31 +352,39 @@ void mostrar_asistencia()
     cout << "\n\t\t\tMis Asistencias\t\t\t"; fecha_hoy();
     cout << "\n\t   Asignaturas \t\t\t A(Asistio) / T(Tardanza) / F(Falta) ";
     cout << "\n****************************************************************************" << endl;
+    
 
     while (!Asistencia.eof() && Asistencia.good() && !encontrado) {
         Asistencia >> codigo;
-        Asistencia >> estudiante.datos_personales.primer_nombre;
-        Asistencia >> estudiante.datos_personales.segundo_nombre;
+        Asistencia >> estudiante.datos_personales.nombres;
         Asistencia >> estudiante.datos_personales.apellido_paterno;
         Asistencia >> estudiante.datos_personales.apellido_materno;
 
-        for (int i = 0; i < 16; ++i) {
-            Asistencia >> asistencia[i];
-            if (asistencia[i] == 'A') {
-                contador++;
-            } else if (asistencia[i] == 'T') {
-                contador2++;
-            } else if (asistencia[i] == 'F') {
-                contador3++;
-            }
-        }    
-
+        agregar_espacio(estudiante.datos_personales.nombres);
+        
         if (codigo == estudiante.credenciales.usuario) {
             encontrado = true;
+            for (int i = 0; i < 16; ++i) {
+                Asistencia >> asistencia[i];
+                if (asistencia[i] == 'A') {
+                    contador++;
+                } else if (asistencia[i] == 'T') {
+                    contador2++;
+                } else if (asistencia[i] == 'F') {
+                    contador3++;
+                }
+            }    
         }
+
+        // Asistencia >> codigo;
+        // Asistencia >> estudiante.datos_personales.nombres;
+        // Asistencia >> estudiante.datos_personales.apellido_paterno;
+        // Asistencia >> estudiante.datos_personales.apellido_materno;
+
+        // agregar_espacio(estudiante.datos_personales.nombres);
     }
 
-    cout << estudiante.curso << " : \t\t" << contador << "%\t" <<  contador2 << "%\t" << contador3 << "%\t" << endl;
+    cout << estudiante.curso << ": \t     " << contador << "%\t\t   " <<  contador2 << "%\t       " << contador3 << "%" << endl;
     // cout << contador << endl;
     cout << "\n\n\nPresione enter para volver" << endl;
 
@@ -387,32 +396,34 @@ void mostrar_notas()
 {
     string codigo;
     bool encontrado = false;
-    float EP, EC, EF, PF;
+    float EP = 0, EC = 0, EF = 0, PF = 0;
 
     ifstream Notas(PATH_NOTAS, ios::in);
 
-    cout << "\n\t\t\tReporte de Evaluaciones \t\t"; fecha_hoy(); cout << endl;
+    cout << "\n\t\t\tReporte de Evaluaciones \t"; fecha_hoy(); 
     cout << "\n\t   Asignaturas \t\t\t\t Calificación";
     cout << "\n****************************************************************************" << endl;
 
     while (!Notas.eof() && Notas.good() && !encontrado) {
         Notas >> codigo;
-        Notas >> estudiante.datos_personales.primer_nombre;    
-        Notas >> estudiante.datos_personales.segundo_nombre;   
+        Notas >> estudiante.datos_personales.nombres;  
         Notas >> estudiante.datos_personales.apellido_paterno;   
         Notas >> estudiante.datos_personales.apellido_materno; 
         Notas >> EP >> EC >> EF >> PF;
+
+        agregar_espacio(estudiante.datos_personales.nombres);
 
         if (codigo == estudiante.credenciales.usuario) {
             encontrado = true;
         }
     }
+
     cout << "\t\t\t\t\tExamen Parcial: " << EP << endl;
     cout << estudiante.curso << "\t\tEvaluaciones Continuas e Informes: " << EC << endl;
     cout << "\t\t\t\t\tExamen Final: " << EF << endl;
     cout << "\n\t\t\t\t\tPromedio Final: " << PF << endl;
-
-    cout << "\n\n\nPresione enter para volver" << endl;
+    
+    cout << "\n\nPresione enter para volver" << endl;
 
     cin.ignore();
     cin.get();
@@ -428,17 +439,22 @@ void registrar_notas()
     fstream Notas(PATH_NOTAS, ios::in | ios::out);
 
     Notas >> codigo;
-    Notas >> estudiante.datos_personales.primer_nombre;
-    Notas >> estudiante.datos_personales.segundo_nombre;
+    Notas >> estudiante.datos_personales.nombres;
     Notas >> estudiante.datos_personales.apellido_paterno;
-    Notas >> estudiante.datos_personales.apellido_materno;
+    Notas >> estudiante.datos_personales.apellido_materno;    
+
+    agregar_espacio(estudiante.datos_personales.nombres);
 
     while (Notas.good() && !Notas.eof()) {
         limpiar_ventana();
+
         cout << "\n\t\t Ingresos de Calificaciones \t"; fecha_hoy();
-        cout << "\n****************************************************************" << endl;        
-        cout << "Estudiante: " << codigo << endl;
-        cout << "Asignatura: " << profesor.curso << endl;
+        cout << "********************************************************************" << endl;
+        cout << "Asignatura           : " << profesor.curso << endl;
+        cout << "Nombre del Estudiante: " << estudiante.datos_personales.apellido_paterno <<  
+                                      " " << estudiante.datos_personales.apellido_materno <<
+                                     ", " << estudiante.datos_personales.nombres << endl;
+        cout << "Códido del Estudiante: " << codigo << endl;
         cout << "\nCalificación de Examen Parcial: ";
         cin >> EP;
         cout << "Calificación de Evaluaciones Continuas e Informes: ";
@@ -446,21 +462,29 @@ void registrar_notas()
         cout << "Calificación de Examen Final: ";
         cin >> EF;
 
-        if ((EP >= 0 && EP <= 20) && (EC >= 0 && EC <= 20) && (EF >= 0 && EF <= 20)) {
+        if ((EP >= 0 && EP <= 20) && 
+            (EC >= 0 && EC <= 20) && 
+            (EF >= 0 && EF <= 20)) {
+            
             PF = (0.3*EP) + (0.4*EC) + (0.3*EF);
-            cout << fixed << setprecision(3);
-            cout << "\nCalificación Promedio Final es: " << (int)(PF+0.5) << endl;
+            PF = (int)(PF + 0.5);
+            
+            cout << "\nCalificación Promedio Final es: " << PF<< endl;
             cout << "\n\n\tCalificaciones Correctas " << endl;
-            cout << "Presione enter para el siguiente estudiante !..." << endl;
+                     
             cin.ignore();
             cin.get();
 
-            Notas << " " << EP << " " << EC << " " << EF << " " << EF;
+            Notas << " " << setw(2) << setfill('0') << EP 
+                  << " " << setw(2) << setfill('0') << EC
+                  << " " << setw(2) << setfill('0') << EF
+                  << " " << setw(2) << setfill('0') << PF;
             Notas >> codigo;
-            Notas >> estudiante.datos_personales.primer_nombre;
-            Notas >> estudiante.datos_personales.segundo_nombre;
+            Notas >> estudiante.datos_personales.nombres;
             Notas >> estudiante.datos_personales.apellido_paterno;
             Notas >> estudiante.datos_personales.apellido_materno;
+
+            agregar_espacio(estudiante.datos_personales.nombres);
         } else {
             cout << "\nVuelve a ingresar denuevo, las notas deben ser de rango [0-20]" << endl;
 
@@ -469,46 +493,43 @@ void registrar_notas()
         }
     }
     
-    cout << "\nIngreso de notas de completado" << endl;
-    
-    cin.ignore();
-    cin.get();
+    cout << "Notas completado" << endl;    
 }
 
 void registrar_asistencia()
 {
     string name1;
-    string name2;
     string apellido_paterno;
     string apellido_materno;
     char tmp;
 
     fstream Asistencia(PATH_ASISTENCIA, ios::in | ios::out);
     
-    cout << "\n\t\t Asistencia \t\t\t"; fecha_hoy(); 
-    cout << "****************************************************************" << endl;
-    cout << " Código \t     Apellidos y Nombres       \t        A|T|F" << endl;  
+    cout << "\n\t\t    Registrando Asistencia \t\t"; fecha_hoy(); 
+    cout << "****************************************************************************" << endl;
+    cout << " Código \t     Apellidos y Nombres       \t\t        A|T|F" << endl;  
 
     Asistencia >> estudiante.codigo;
-    Asistencia >> estudiante.datos_personales.primer_nombre;
-    Asistencia >> estudiante.datos_personales.segundo_nombre;
+    Asistencia >> estudiante.datos_personales.nombres;
     Asistencia >> estudiante.datos_personales.apellido_paterno;
     Asistencia >> estudiante.datos_personales.apellido_materno;
 
+    agregar_espacio(estudiante.datos_personales.nombres);
+
     while (!Asistencia.eof() && Asistencia.good()) {
-        cout << left << setw(10) << estudiante.codigo << "\t" 
+        cout << left     << setw(10) << estudiante.codigo << "\t" 
              << setw(15) << estudiante.datos_personales.apellido_paterno + " " +  estudiante.datos_personales.apellido_materno + ", " 
-             << setw(20) << estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre 
-             << "\t";
+             << setw(20) << estudiante.datos_personales.nombres << "\t\t  ";
         cin >> tmp;
         
-        Asistencia << " " << tmp;
+        Asistencia << " " << tmp << endl;
+        // Asistencia >> tmp;
         Asistencia >> estudiante.codigo;
-        Asistencia >> estudiante.datos_personales.primer_nombre;
-        Asistencia >> estudiante.datos_personales.segundo_nombre;
+        Asistencia >> estudiante.datos_personales.nombres;
         Asistencia >> estudiante.datos_personales.apellido_paterno;
         Asistencia >> estudiante.datos_personales.apellido_materno;
     }
+    agregar_espacio(estudiante.datos_personales.nombres);
     cout << "\nAsistencia completada" << endl;
 
     cin.ignore();
@@ -531,8 +552,7 @@ void crear_alumno()
     getline(cin, estudiante.credenciales.contrasena);
 
     cout << "\n\tNombres: ";
-    getline(cin, estudiante.datos_personales.primer_nombre);
-    // getline(cin, estudiante.datos_personales.segundo_nombre);
+    getline(cin, estudiante.datos_personales.nombres);
 
     cout << "\tApellidos: ";
     getline(cin, estudiante.datos_personales.apellido_paterno);
@@ -544,24 +564,24 @@ void crear_alumno()
     cout << "\tIngrese la Asignatura: ";
     getline(cin, estudiante.curso);
 
+    quitar_espacio(estudiante.datos_personales.nombres);
     quitar_espacio(estudiante.carrera);
     quitar_espacio(estudiante.curso);
 
     Alumno << "\n" << estudiante.credenciales.usuario << "   ";
     Alumno << estudiante.credenciales.contrasena << "   ";
-    Alumno << estudiante.datos_personales.primer_nombre << "   ";
-    // Alumno << estudiante.datos_personales.segundo_nombre << "   ";
+    Alumno << estudiante.datos_personales.nombres << "   ";
     Alumno << estudiante.datos_personales.apellido_paterno << "   ";
     // Alumno << estudiante.datos_personales.apellido_materno << "   ";
     Alumno << estudiante.carrera << "   ";
     Alumno << estudiante.curso;
 
     Asistencia << "\n" << estudiante.credenciales.usuario << "   ";
-    Asistencia << estudiante.datos_personales.primer_nombre << "   ";
+    Asistencia << estudiante.datos_personales.nombres<< "   ";
     Asistencia << estudiante.datos_personales.apellido_paterno << "   ";
 
     Notas << "\n" << estudiante.credenciales.usuario << "   ";
-    Notas << estudiante.datos_personales.primer_nombre << "   ";
+    Notas << estudiante.datos_personales.nombres<< "   ";
     Notas << estudiante.datos_personales.apellido_paterno << "   ";
 
     cout << "\n\nDatos del alumno registrados y almacenados." << endl;
@@ -596,18 +616,18 @@ void leer_alumno()
     while (!Alumno.eof() && Alumno.good() && !encontrado) {
         Alumno >> estudiante.credenciales.usuario;
         Alumno >> estudiante.credenciales.contrasena;
-        Alumno >> estudiante.datos_personales.primer_nombre;
-        Alumno >> estudiante.datos_personales.segundo_nombre;
+        Alumno >> estudiante.datos_personales.nombres;
         Alumno >> estudiante.datos_personales.apellido_paterno;
         Alumno >> estudiante.datos_personales.apellido_materno;
         Alumno >> estudiante.carrera;
         Alumno >> estudiante.curso;
 
+        agregar_espacio(estudiante.datos_personales.nombres);
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
         if (codigo == estudiante.credenciales.usuario ||
-            (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
+            (nombres == estudiante.datos_personales.nombres ||
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
         }
@@ -617,7 +637,7 @@ void leer_alumno()
         cout << "\n****************************************************************************" << endl;
         cout << "\t\t\tEstudiante Encontrado" << endl;
         cout << "\nCódigo del Estudiante    : " << estudiante.credenciales.usuario << endl;
-        cout << "Nombres del Estudiante   : " << estudiante.datos_personales.primer_nombre << " " <<  estudiante.datos_personales.segundo_nombre << endl;
+        cout << "Nombres del Estudiante   : " << estudiante.datos_personales.nombres << endl;
         cout << "Apellidos del Estudiante : " << estudiante.datos_personales.apellido_paterno << " " << estudiante.datos_personales.apellido_materno << endl;
         cout << "Carrera del Estudiante   : " << estudiante.carrera << endl;
         cout << "Asignatura del Estudiante: " << estudiante.curso << endl;
@@ -656,19 +676,19 @@ void actualizar_alumno()
 
     Actualizar >> estudiante.credenciales.usuario;
     Actualizar >> estudiante.credenciales.contrasena;
-    Actualizar >> estudiante.datos_personales.primer_nombre;
-    Actualizar >> estudiante.datos_personales.segundo_nombre;
+    Actualizar >> estudiante.datos_personales.nombres;
     Actualizar >> estudiante.datos_personales.apellido_paterno;
     Actualizar >> estudiante.datos_personales.apellido_materno;
     Actualizar >> estudiante.carrera;
     Actualizar >> estudiante.curso;
 
     while (!Actualizar.eof() && Actualizar.good()) {
+        agregar_espacio(estudiante.datos_personales.nombres);
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
         if (codigo == estudiante.credenciales.usuario ||
-            (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
+            (nombres == estudiante.datos_personales.nombres ||
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
 
@@ -711,7 +731,7 @@ void actualizar_alumno()
                         cin.ignore();
                         limpiar_ventana();
 
-                        cout << "\nNombres actual            : " << estudiante.datos_personales.primer_nombre << " " << estudiante.datos_personales.segundo_nombre << endl;
+                        cout << "\nNombres actual            : " << estudiante.datos_personales.nombres << endl;
                         cout << "Ingrese los nuevos nombres: ";
                         getline(cin, nombres);
 
@@ -772,6 +792,7 @@ void actualizar_alumno()
                 }
             } while (opc != 7);
 
+            quitar_espacio(estudiante.datos_personales.nombres);
             quitar_espacio(estudiante.carrera);
             quitar_espacio(estudiante.curso);
 
@@ -783,14 +804,14 @@ void actualizar_alumno()
             Actualizar_Temporal << estudiante.curso << endl;
 
         } else {
+            quitar_espacio(estudiante.datos_personales.nombres);
             quitar_espacio(estudiante.carrera);
             quitar_espacio(estudiante.curso);
 
             Actualizar_Temporal << estudiante.credenciales.usuario << "   ";
             Actualizar_Temporal << estudiante.credenciales.contrasena << "   ";
-            Actualizar_Temporal << estudiante.datos_personales.primer_nombre << " ";
-            Actualizar_Temporal << estudiante.datos_personales.segundo_nombre << "   ";
-            Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << " ";
+            Actualizar_Temporal << estudiante.datos_personales.nombres << "   ";
+            Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << "  ";
             Actualizar_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Actualizar_Temporal << estudiante.carrera << "   ";
             Actualizar_Temporal << estudiante.curso << endl;
@@ -798,8 +819,7 @@ void actualizar_alumno()
 
         Actualizar >> estudiante.credenciales.usuario;
         Actualizar >> estudiante.credenciales.contrasena;
-        Actualizar >> estudiante.datos_personales.primer_nombre;
-        Actualizar >> estudiante.datos_personales.segundo_nombre;
+        Actualizar >> estudiante.datos_personales.nombres;
         Actualizar >> estudiante.datos_personales.apellido_paterno;
         Actualizar >> estudiante.datos_personales.apellido_materno;
         Actualizar >> estudiante.carrera;
@@ -843,29 +863,29 @@ void eliminar_alumno()
 
     Alummno >> estudiante.credenciales.usuario;
     Alummno >> estudiante.credenciales.contrasena;
-    Alummno >> estudiante.datos_personales.primer_nombre;
-    Alummno >> estudiante.datos_personales.segundo_nombre;
+    Alummno >> estudiante.datos_personales.nombres;
     Alummno >> estudiante.datos_personales.apellido_paterno;
     Alummno >> estudiante.datos_personales.apellido_materno;
     Alummno >> estudiante.carrera;
     Alummno >> estudiante.curso;
 
     while (!Alummno.eof() && Alummno.good()) {
+        agregar_espacio(estudiante.datos_personales.nombres);
         agregar_espacio(estudiante.carrera);
         agregar_espacio(estudiante.curso);
 
         if (codigo == estudiante.credenciales.usuario && 
-            (nombres == estudiante.datos_personales.primer_nombre + " " + estudiante.datos_personales.segundo_nombre ||
+            (nombres == estudiante.datos_personales.nombres ||
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
         } else {
+            quitar_espacio(estudiante.datos_personales.nombres);
             quitar_espacio(estudiante.carrera);
             quitar_espacio(estudiante.curso);
 
             Alummno_Temporal << estudiante.credenciales.usuario << "   ";
             Alummno_Temporal << estudiante.credenciales.contrasena << "   ";
-            Alummno_Temporal << estudiante.datos_personales.primer_nombre << " ";
-            Alummno_Temporal << estudiante.datos_personales.segundo_nombre << "   ";
+            Alummno_Temporal << estudiante.datos_personales.nombres << "   ";
             Alummno_Temporal << estudiante.datos_personales.apellido_paterno << " ";
             Alummno_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Alummno_Temporal << estudiante.carrera << "   ";
@@ -874,8 +894,7 @@ void eliminar_alumno()
 
         Alummno >> estudiante.credenciales.usuario;
         Alummno >> estudiante.credenciales.contrasena;
-        Alummno >> estudiante.datos_personales.primer_nombre;
-        Alummno >> estudiante.datos_personales.segundo_nombre;
+        Alummno >> estudiante.datos_personales.nombres;
         Alummno >> estudiante.datos_personales.apellido_paterno;
         Alummno >> estudiante.datos_personales.apellido_materno;
         Alummno >> estudiante.carrera;
