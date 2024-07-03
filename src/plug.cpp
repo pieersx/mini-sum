@@ -875,7 +875,7 @@ void eliminar_alumno()
         agregar_espacio(estudiante.curso);
 
         if (codigo == estudiante.credenciales.usuario && 
-            (nombres == estudiante.datos_personales.nombres ||
+            (nombres == estudiante.datos_personales.nombres &&
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
         } else {

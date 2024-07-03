@@ -11,7 +11,7 @@ int main(void)
     
     portada();
     sleep(2);
-
+    
     do {
 
         limpiar_ventana();
@@ -82,7 +82,14 @@ int main(void)
                                 registrar_notas();
                                 break;
                             }
-                            default: break;
+                            case 3: break;
+                            default: {
+                                cout << "\n\tOpción no válida" << endl; 
+                                cout << "Presione enter para volver selecionar..."; 
+
+                                cin.ignore();
+                                cin.get();
+                            }
                         }
                     } while (opc2 != 3);
                 }

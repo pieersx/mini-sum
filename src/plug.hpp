@@ -35,7 +35,7 @@ int submenu4();
 
 
 /* 
-    Funciones personales
+    Funciones hechas por nosotros
 */
 
 // Declaración de la función para limpiar la ventana de la consola para windows y sistemas POSIX
