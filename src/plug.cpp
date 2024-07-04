@@ -340,12 +340,8 @@ bool buscar_estudiante(string &usuario, string &contrasena)
 void mostrar_asistencia()
 {
     string codigo;
-    char asistencia[16];
+    char asistencia;
     bool encontrado = false;
-    float contador = 0;
-    float contador2 = 0;
-    float contador3 = 0;
-    // float asistencias = 0;
 
     ifstream Asistencia(PATH_ASISTENCIA, ios::in);    
     
@@ -359,33 +355,16 @@ void mostrar_asistencia()
         Asistencia >> estudiante.datos_personales.nombres;
         Asistencia >> estudiante.datos_personales.apellido_paterno;
         Asistencia >> estudiante.datos_personales.apellido_materno;
+        Asistencia >> asistencia;
 
         agregar_espacio(estudiante.datos_personales.nombres);
         
         if (codigo == estudiante.credenciales.usuario) {
             encontrado = true;
-            for (int i = 0; i < 16; ++i) {
-                Asistencia >> asistencia[i];
-                if (asistencia[i] == 'A') {
-                    contador++;
-                } else if (asistencia[i] == 'T') {
-                    contador2++;
-                } else if (asistencia[i] == 'F') {
-                    contador3++;
-                }
-            }    
         }
-
-        // Asistencia >> codigo;
-        // Asistencia >> estudiante.datos_personales.nombres;
-        // Asistencia >> estudiante.datos_personales.apellido_paterno;
-        // Asistencia >> estudiante.datos_personales.apellido_materno;
-
-        // agregar_espacio(estudiante.datos_personales.nombres);
     }
 
-    cout << estudiante.curso << ": \t     " << contador << "%\t\t   " <<  contador2 << "%\t       " << contador3 << "%" << endl;
-    // cout << contador << endl;
+    cout << estudiante.curso << ": \t\t\t" << asistencia << endl;
     cout << "\n\n\nPresione enter para volver" << endl;
 
     cin.ignore();
