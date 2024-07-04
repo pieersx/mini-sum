@@ -779,7 +779,7 @@ void actualizar_alumno()
             if (!primera_escritura) {
                 Actualizar_Temporal << endl;
             }
-            Actualizar_Temporal << estudiante.credenciales.usuario << "   ";
+            Actualizar_Temporal << codigo << "   ";
             Actualizar_Temporal << estudiante.credenciales.contrasena << "   ";
             Actualizar_Temporal << estudiante.datos_personales.nombres << "   ";
             Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << "  ";
