@@ -568,7 +568,7 @@ void crear_alumno()
     quitar_espacio(estudiante.carrera);
     quitar_espacio(estudiante.curso);
 
-    Alumno << "\n" << estudiante.credenciales.usuario << "   ";
+    Alumno << estudiante.credenciales.usuario << "   ";
     Alumno << estudiante.credenciales.contrasena << "   ";
     Alumno << estudiante.datos_personales.nombres << "   ";
     Alumno << estudiante.datos_personales.apellido_paterno << "   ";
@@ -802,7 +802,7 @@ void actualizar_alumno()
             Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << "  ";
             Actualizar_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Actualizar_Temporal << estudiante.carrera << "   ";
-            Actualizar_Temporal << estudiante.curso << endl;
+            Actualizar_Temporal << estudiante.curso << "   \n";
 
         } else {
             quitar_espacio(estudiante.datos_personales.nombres);
@@ -815,7 +815,7 @@ void actualizar_alumno()
             Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << "  ";
             Actualizar_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Actualizar_Temporal << estudiante.carrera << "   ";
-            Actualizar_Temporal << estudiante.curso << endl;
+            Actualizar_Temporal << estudiante.curso << "   \n";
         }
 
         Actualizar >> estudiante.credenciales.usuario;
@@ -874,13 +874,13 @@ void eliminar_alumno()
     Alummno >> estudiante.carrera;
     Alummno >> estudiante.curso;
 
-    while (!Alummno.eof() && Alummno.good()) {
-        agregar_espacio(estudiante.datos_personales.nombres);
-        agregar_espacio(estudiante.carrera);
-        agregar_espacio(estudiante.curso);
+    agregar_espacio(estudiante.datos_personales.nombres);
+    agregar_espacio(estudiante.carrera);
+    agregar_espacio(estudiante.curso);
 
-        if (codigo == estudiante.credenciales.usuario && 
-            (nombres == estudiante.datos_personales.nombres &&
+    while (!Alummno.eof() && Alummno.good()) {
+        if (codigo == estudiante.credenciales.usuario || 
+            (nombres == estudiante.datos_personales.nombres ||
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
             encontrado = true;
         } else {
@@ -894,7 +894,7 @@ void eliminar_alumno()
             Alummno_Temporal << estudiante.datos_personales.apellido_paterno << " ";
             Alummno_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Alummno_Temporal << estudiante.carrera << "   ";
-            Alummno_Temporal << estudiante.curso << endl;
+            Alummno_Temporal << estudiante.curso << "   \n";
         }
 
         Alummno >> estudiante.credenciales.usuario;
@@ -904,6 +904,10 @@ void eliminar_alumno()
         Alummno >> estudiante.datos_personales.apellido_materno;
         Alummno >> estudiante.carrera;
         Alummno >> estudiante.curso;
+
+        agregar_espacio(estudiante.datos_personales.nombres);
+        agregar_espacio(estudiante.carrera);
+        agregar_espacio(estudiante.curso);
     }
 
     if (encontrado) {
