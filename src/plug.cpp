@@ -682,11 +682,11 @@ void actualizar_alumno()
     Actualizar >> estudiante.carrera;
     Actualizar >> estudiante.curso;
 
-    while (!Actualizar.eof() && Actualizar.good()) {
-        agregar_espacio(estudiante.datos_personales.nombres);
-        agregar_espacio(estudiante.carrera);
-        agregar_espacio(estudiante.curso);
+    agregar_espacio(estudiante.datos_personales.nombres);
+    agregar_espacio(estudiante.carrera);
+    agregar_espacio(estudiante.curso);
 
+    while (!Actualizar.eof() && Actualizar.good()) {
         if (codigo == estudiante.credenciales.usuario ||
             (nombres == estudiante.datos_personales.nombres ||
             apellidos == estudiante.datos_personales.apellido_paterno + " " + estudiante.datos_personales.apellido_materno)) {
@@ -796,10 +796,11 @@ void actualizar_alumno()
             quitar_espacio(estudiante.carrera);
             quitar_espacio(estudiante.curso);
 
-            Actualizar_Temporal << codigo << "   ";
+            Actualizar_Temporal << estudiante.credenciales.usuario << "   ";
             Actualizar_Temporal << estudiante.credenciales.contrasena << "   ";
-            Actualizar_Temporal << nombres << "   ";
-            Actualizar_Temporal << apellidos << "   ";
+            Actualizar_Temporal << estudiante.datos_personales.nombres << "   ";
+            Actualizar_Temporal << estudiante.datos_personales.apellido_paterno << "  ";
+            Actualizar_Temporal << estudiante.datos_personales.apellido_materno << "   ";
             Actualizar_Temporal << estudiante.carrera << "   ";
             Actualizar_Temporal << estudiante.curso << endl;
 
@@ -823,7 +824,11 @@ void actualizar_alumno()
         Actualizar >> estudiante.datos_personales.apellido_paterno;
         Actualizar >> estudiante.datos_personales.apellido_materno;
         Actualizar >> estudiante.carrera;
-        Actualizar >> estudiante.curso;       
+        Actualizar >> estudiante.curso;
+
+        agregar_espacio(estudiante.datos_personales.nombres);
+        agregar_espacio(estudiante.carrera);
+        agregar_espacio(estudiante.curso);  
     }
 
     if (!encontrado) {

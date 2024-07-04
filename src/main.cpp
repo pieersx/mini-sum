@@ -120,6 +120,7 @@ int main(void)
                         case 4: {
                             limpiar_ventana();
                             eliminar_alumno();
+                            break;
                         }
                         case 5: break;
                         default: {
